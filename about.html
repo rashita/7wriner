@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="tadanori kurashita">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+
+    <title>About - 7wriner</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/js_jquery.easing.1.3.js"></script>
+    
+  <style>/* Copyright 2017 tadanori kurashita. All rights reserved. */
+
+#bookshelfWrapper{
+   //position:fixed;
+   z-index:2;
+}
+#shelfear{
+    background-color:#fff;
+    border:1px solid #ccc;
+    width:100px;
+    margin-left:50px;
+    text-align:center;
+    position:fixed;
+    bottom:-1px;
+    }
+
+#bookitem{
+    position:fixed;
+    bottom:-190px;
+}
+
+#bookshelf{
+    overflow-x:auto; overflow-y:hidden; width:100%; white-space:nowrap;
+    background-color:#fff;
+    padding-top:15px;
+    padding-bottom:15px;
+    border-top:1px solid #eee;
+    padding-left:30px;
+}
+
+.cell{
+    display:inline-block; margin-right:1%; width:110px; vertical-align:top; white-space:normal;
+}
+
+#header{
+    background-color:#ccc;height:370px;padding-top:50px;
+    background-image: url(image/header.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+.col-md-7 h2{
+    margin-top:20px;
+}
+
+.marketing h1{
+    margin-top:30px;
+    margin-bottom:30px;
+    font-size:3em;
+   
+}
+
+.reverse{
+     background-color:#ddd;
+}
+
+#headerinner{
+    width:500px;
+    height:275px;
+    margin:0px auto;
+}
+
+@media screen and (max-width: 512px) {
+
+#containe{
+margin:0 auto;
+width:100%;
+}
+    #header{
+    height:350px;
+    padding-top:0px;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin:0 auto;
+    width:100%;
+
+
+    }
+
+    #headerinner{
+            width:300px;
+            height:350px;
+    }
+    #mainwindowimage{
+        width:350px
+    }
+}
+
+
+
+
+@charset "UTF-8";
+/* CSS Document */
+
+#senya-rss-reader {
+	width: 100%;
+}
+.fix-width {
+	margin: 0 auto;
+	width: 980px;
+}
+
+.tab-area {
+	margin: 0 auto;
+	width: 100%;
+	height: 39px;
+	z-index: 10000;
+
+}
+.toggle-switch {
+	width: 80px;
+	height: 30px;
+	border:1px solid #ddd;
+	background-color:#fff;
+	opacity:0.5;
+	color:#000;
+}
+.toggle-switch:hover {
+	cursor: pointer;
+}
+.item-area {
+	width: 100%;
+	background: #ffffff;
+	z-index: 10000;
+}
+.inner {
+	letter-spacing: -0.4em;
+	padding: 5px 5px 0;
+	text-align: center;
+	 overflow-x:auto; overflow-y:hidden; width:100%; white-space:nowrap;
+}
+.item {
+	letter-spacing: normal;
+	margin: 0 auto;
+	display: inline-block;
+	padding: 13px;
+	width: 150px;
+	text-align: left;
+	vertical-align: top;
+	font-size: 12px; 
+	color: #3bab00;
+}
+.item .category {
+	margin-bottom: 10px;
+	padding-left: 6px;
+	border-left: 4px solid #3bab00;
+}
+.item .title a {
+	text-decoration: none;
+	line-height: 140%;
+}
+.item .title a:hover {
+	text-decoration: underline;
+}
+.item .thumbnail {
+	margin-bottom: 10px;
+	width: 100%;
+	height: 167px;
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+}
+.item .pubDate {
+	line-height: 140%;
+}
+.inner .note-link img {
+	vertical-align: bottom;
+}
+
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+ var agent = navigator.userAgent;
+ if(agent.search(/iPhone/) != -1){
+ $('#shelfear').css({display : 'none'});
+ }else if(agent.search(/iPad/) != -1){
+$('#shelfear').css({display : 'none'});
+ }else if(agent.search(/Android/) != -1){
+$('#shelfear').css({display : 'none'});
+ }
+});
+</script>
+
+</head>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="index.html">7wriner</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://rashita.net/blog/">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main">
+
+
+
+        <div id="header">
+            <div class="containe" style="">
+              <div id="headerinner" style="text-align:center;background-color:#eee;background-color:rgb(210,210,210,0.9);padding:5px 0;"> 
+                <h1 style="font-size:3em;margin-top:10px;margin-bottom:20px;color:#000;">Dance with Lines</h1>
+                <p style="color:#000;">ツリー型ではない、新しいタイプの情報管理ツール。<br><br>情報をカード化し、ラインに配置する。<br>あとは、クルクルと。<br>
+                </p>
+                <p><a class="btn btn-lg btn-primary" href="index.html" role="button">Try it</a></p>
+              </div>
+            </div>
+          </div>
+
+
+
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+      
+        <div class="row">
+          <div class="col-md-7">
+            <h2 class="featurette-heading"><span class="text-muted">7wriner</span> is browser tool.</h2>
+            <p class="lead">7wrinerはウェブブラウザで動作するツールです。モダンなブラウザなら、特に問題なく動作します（するはずです）。<br><br>
+            
+            作成されたデータは、サーバーに保存されるのではなく、それぞれのブラウザが保存しています（localstorageという機能を用いています）。よって、リロードしても作成したデータが失われることはありませんが、別のブラウザからアクセスした場合は、まったく新規のデータが作成されることになります。<br><br>
+            
+            何かしらの不具合でウェブブラウザが吹っ飛んだり、OSを再インストールする場合は7wrinerのデータが失われる点にはご注意ください（安心してください。バックアップファイルをダウンロードする機能はちゃんとついています）</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/featurette-heading1.png">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading"><span class="text-muted">7wriner</span> has three-linemode.</h2>
+            <p class="lead">7wrinerは、ウィンドウのサイズに合わせて3パターンのレイアウトを持ちます。<br><br>512px以下であれば、1line Mode、1200px付近までであれば、2line Mode、それ以上では3lime Modeで表示されます。<br><br>どのモードも基本的なことは共通して行えますが、「パソコンで3line Mode」が想定している環境です。</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/featurette-heading2.png">
+          </div>
+        </div>
+
+        
+        <div class="row">
+          <div class="col-md-7">
+            <h2 class="featurette-heading"><span class="text-muted">7wriner</span> has six-viewmode.</h2>
+            <p class="lead">7wrinerは、６つのビューモードを持ちます。normal,edit,marge,preview,overview,full-sreenの６つです。<br><br>それぞれのビューモードでは、カードに対して行える操作や、表示スタイルに違いがあります。<br><br>行いたい動作に合わせて、ビューモードを切り替えながら使っていく、というのが7wrinerの使用スタイルです。</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/featurette-heading3.png">
+          </div>
+        </div>
+
+        
+<h1 style="text-align:center;" >7 line Window image</h1>
+    <div class="row">
+    <div class="col-md-12" style="text-align:center;">
+    <img src="image/windowimage.png" id="mainwindowimage">
+    <p>情報単位：カード<br>カードを束ねるもの：ライン<br>中央に表示されるライン：メインライン(1)<br>左右に表示されるライン：サイドライン(2)<br>表示されていないライン：バックライン(4)<p>
+    <hr>
+    <h2>1/7?</h2>
+    <p>人が一時に意識を置ける対象/マジカルナンバー</p>
+    </div>
+    </div><!-- /END row -->
+    
+    <h1 style="text-align:center;">Basic</h1>
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>Make a Card</h2><p>上部に設置されているテキスト入力領域にテキストを入力し、「Keep」ボタンをクリックすると、テキスト保存領域にそのテキストが保存されます。<br><br>
+        
+        そうして作成された情報単位を、7wrinerでは「カード」と呼びます。またそれぞれのカードが配置されている領域を「ライン」と呼びます。つまり、「Keep」ボタンはあるラインに対して新しくカードを追加するためのボタンです。<br><br>カードの作成は、入力中にCommand(Mac) + Return キーでも行えます。</p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic1.png"></div>
+    </div><!-- /END row -->
+        
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic2.png"></div>
+    <div class="col-md-7">
+        <h2>Move a card</h2><p>ライン上に配置されたカードはドラッグで移動可能です。<br><br>メインラインだけでなく、左右のラインにもドラッグできます。ただし左右のラインが表示されていない場合はドラッグできません。あくまで表示されているライン間のみでの移動です。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7"><h2>shift Line</h2><p>Command(winではalt） + →（あるいは←）でメインラインに表示されるラインが変わります。7wrinerでは合計7本のラインが存在しているので、7回移動を繰り返せば最初のラインに戻ってきます。<br><br>2line Mod,1line Modeではライン移動用のボタンが表示されます。<br><br>デスクトップ（PC）以外のフリック可能な端末であれば、ボタン領域の空きスペースを左右どちらかにフリックすることでラインの移動が可能です。
+        </p></div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic3.png">
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic4.png"></div>
+    <div class="col-md-7">
+        <h2>Edit Mode</h2><p>「Edit」ボタンを押せば、Edit Modeに変化します。各カードに削除用のボタンが追加され、さらに直接テキストを編集できるようになります。<br><br>ただし、このEdit Modeではカードのドラッグでの移動は不可能となります。代わりに、Command +↑(あるいは↓）を押すことでフォーカスしているカードが上下に移動します。<br><br>
+        
+        このEdit modoからは、さらにMerge ModeおよびFull-screen Modeへの移動が可能です。逆に、Preveiw modeおよびOverVeiwへの移動は不可能となります。<br><br>
+        
+        2line Modeおよび1line Modeでは、削除ボタンの代わりに操作パネルが表示されます。そのパネルでは、削除、フルスクリーンモードへ移動、上部に新規カード作成、ヘッドライン設定が行えます。<br><br>
+        
+        「End」ボタンを押せば、Edit Modは終了し、Normal Modeへと復帰します。再びドラッグでの移動が可能となります。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+            <h2>Merge Mode</h2><p>Edit Mode中に表示される「Merge」ボタンを押すと、Merge Modeに変化します。Merge ModeはEdit Modeの拡張なので基本的な動作は同じですが、カードとカードの間に＋ボタンが表示され、それをクリックするとことで二つのカードを結合（マージ）することができます。<br><br>
+    
+    「End」ボタンを押せば、Merge Mode、Edit Modeともに終了しNormal Modeに移行します。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic5.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic6.png"></div>
+    <div class="col-md-7">
+        <h2>Prerview Mode</h2><p>Normal Modeにて、Command(winではalt） + ↑を押せば、Prerview Modeに移行します。Prerview Modeはメインラインの内容だけをフォーカスして表示するモードです。<br><br>
+        
+        もしカード内に、#,##,### で始まる行があればそれを「見出し」として扱い、スタイルを変化させて表示します。<br><br>
+        
+        本文のどこかをダブルクリックすれば、全文が選択状態となります。<br><br>
+        
+        ウィンドウ下に表示される「close」ボタン、あるいはウィンドウの外側の黒い領域をクリックすることでPrerview Modeは終了し、Normal Modeに復帰します。また、Command + ↑（あるいは↓）の操作でも同様です。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>Overveiw Mode</h2>Normal Modeにて、Command (winではalt） + ↓を押せば、Overveiw Modeに移行します。Overveiw Modeは全ライン・全カードを俯瞰するためのモードです。俯瞰しやすいように、カードの高さの最大値が固定されて表示されます。<br><br>
+        
+        Overveiw Modeは、さらに二つのモードを持ちます。移行した状態はline modeと呼ばれ、ドラッグでのラインごとの移動が可能です。「line mode」と表示されているボタンをクリックすると、card modeに切り替わり、そこではカードごとの移動が可能となります。ここでもカードが所属しているライン以外へのドラッグが可能です。大規模なカード操作に適したモードです。<br><br>
+        
+        Overveiw Modeで「cancel」ボタンを押すか、ウィンドウの外側の黒い領域をクリックした場合、移動した状態が<strong>保存されずに</strong>、Overveiw Modeが終了します。Command + ↓（ないし（↑）を入力した場合は、移動した状態が<strong>保存されて</strong>、Overveiw Modeが終了します。
+        <p>
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic7.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/basic8.png"></div>
+    <div class="col-md-7">
+        <h2>Full-screen Mode</h2><p>Edit Mode中に、カードをダブルクリックすると、そのカードのFull-screen Modeに移行します。Full-screen Modeでは、他のライン、他のカードは非表示となり、ほぼ全画面でそのカードの内容が表示されます。集中して文章を書きたいときに使えるモードです。画面左上に表示される▽ボタンをクリックすることで、Edit Modeに復帰します。<br><br>
+        2line Mode、3line Modeでは、カード操作パネルの△ボタンをクリックすることでフルスクリーンモードに移行できます。
+        </p>
+    </div></div><!-- /END row -->
+
+    <h1 style="text-align:center;">Advanced</h1>
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>Clear this line</h2><p>Edit Modeではラインの一番下に「Clear this line」ボタンが表示されます。クリックすると表示されているメインライン上のカードがすべて削除されます。<br><br>取り消し等はできませんので、慎重に操作してください。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/ad1.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/ad2.png"></div>
+    <div class="col-md-7">
+        <h2>Send & Call</h2><p>メインライン下に表示されている「Send」ボタンを押せば、そのラインをTemporary placementに保存することができます。保存時にはラインのトップにあるカードがライン名として使用されます。<br><br>保存されたラインは「Call」ボタンで呼び出せます。一度呼び出されたラインは、その時点でTemporary placementから削除されます。<br><br>Callボタンでラインを呼び出した際、メインラインに表示されていたラインは自動的にTemporary placementに送られます。<br><br>呼び出す代わりに、「削除」ボタンを押せば、そのラインをTemporary placementから削除できます。<br><br>
+        
+        暫定的に７つ以上のラインを保持したい場合は、このTemporary placementを利用してください。ただし、ここにラインを溜めるのはあまり得策とは言えないことを注意点として述べておきます。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>HeadLine Card</h2><p>Nomal Mode中にカードを<strong>ダブルクリック</strong>すると、そのカードが「HeadLine属性」を持ちます。HeadLine属性を持つとカードの表示が変わり、カード内の表記も太字となります。<br><br>
+        
+        もしラインの最上部にこのHeadLine属性を持つカードが存在しているならば、keepボタンで作成される新規カードは、最上部ではなく二番目に配置されます。最上部とその次にHeadLine属性を持つカードが存在している場合でも、配置は二番目となります。<br><br>
+        
+        そのラインの内容を明示するために使えるカード属性です。<br><br>
+        
+        もう一度HeadLine属性を持つカードをダブルクリックすると、HeadLine属性は剥奪されます。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/ad3.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/ad4.png"></div>
+    <div class="col-md-7">
+        <h2>Split Card</h2><p>Edit Modeでカードを編集中に、Command + Option(Mac) + k を押すと、その場所でカードが分割されます。<br><br>分割されたカードには削除ボタンがついていませんが、一度Edit Modeを終了し、もう一度Edit Modeへ移行すればボタンは表示されます。<br><br>
+        
+        このカード分割は、カード内テキストの --- をトリガーとして行いますので、カード中に --- を予め埋め込んで Command + Option(Mac) + k を押せば、複数箇所での分割が可能になります。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>Make a Card</h2><p>Edit Modeでカード編集中に、command + returnを押すと、そのカードの直後に新規カードが作成され、フォーカスがそのカードに移動します。<br><br>新規作成されたカードは、その時点では削除ボタンを持ちませんが、再度Edit Modeに移行したタイミングで表示されるようになります。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/ad5.png"></div>
+    </div><!-- /END row -->
+    
+    <h1 style="text-align:center;">More Advanced</h1>
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moread1.png"></div>
+    <div class="col-md-7">
+        <h2>full export</h2><p>メニューバー右に表示されている「7wriner」をクリックすると、ロゴメニューが開きます。そのメニューにある「full export」を選択すると、エキスポートダイアログが表示されます。<br><br>選択できるフォーマットは、「text」「html」「opml」の三種類。全ライン、全カードに含まれるテキストが、それぞれのフォーマットに合わせて表示されます。<br><br>
+        
+        「opml」を選択し、その全文をコピーして、WorkFlowyに貼りつければ、ラインの構造を維持したままでの移行が可能です。その際、各ラインの最上位のカードが第一項目となり、その下にラインの他のカードが配置されます。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>backup download</h2><p><strong>現在、パソコン版のみの機能です。</strong><br><br>ロゴメニューから「backup download」を選択すると、全ライン・全カードの情報をjson形式でダウンロードできます。このファイルをimportすれば、保存した状態に復帰させることができます。<br><br>
+        
+        ただし、スマートフォンやタブレットでは文字化けしたファイルになるので利用できません（対応予定機能）。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moread2.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moread3.png"></div>
+    <div class="col-md-7">
+        <h2>import&replace</h2><p>ダウンロードしたbackupファイルをインポートするための機能です。<br><br>ファイル選択ダイアログが立ち上がりますので、ダウンロードしたファイルを選択してください。その後、読み込まれる全ラインがプレビューモード形式で表示されますので、それで問題なければ「import」ボタンを押してください。現在表示されている全ラインが破棄され、読み込まれた全ラインに置き換わります。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>clear all date</h2><p>ロゴメニューの「clear all date」を使えば、全ライン・全カードのデータを削除できます。すべてを破棄したい、そんな気持ちになったときにお使い下さい。ただし、復旧はできませんので、その前にバックアップファイルを作成しておくのをお勧めします。<br><br>
+        
+        現時点では、カーかイブ領域はそのまま残されますが、将来的にバックアップファイルにアーカイブ領域のデータを含めるようになった時点で、あらゆるデータを破棄するようになります。くれぐれも利用にはご注意を。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moread4.png"></div>
+    </div><!-- /END row -->
+    
+    <h1 style="text-align:center;">More More Advanced</h1>
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moremoread1.png"></div>
+    <div class="col-md-7">
+        <h2>Command window</h2><p>control(Mac) + command + →で、Command windowが表示されます。Command windowは、それぞれのview modeで違ったものが表示されます。<br><br>
+        Nomarl Modeおよび Edit Modeでは、imaginary windowが、<br>
+        Preview Modeでは、index windowが、<br>
+        OverView Modeでは、inspector windowが、<br>
+        Full-screen Modeでは、editorial windowが、<br><br>
+        
+        それぞれ表示されます。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>imaginary window</h2><p>imaginary windowは、仮想領域のラインを表示します。このウィンドウ内にある領域に、他のラインからカードをドラッグすることが可能です。この領域内でも順番移動が可能です。さらに下についた各種のボタンにより、カードに対する操作も行えます。<br><br>
+        
+        Margeは、全カードの結合が、<br>
+        Recall（↑）（↓）は、メインラインへのカードの差し戻しが、<br>
+        Reverseは、並べたカードを逆順にソートが、<br>
+        Randomは、並べたカードの無作為の並べ替えが、<br>
+        Deleteは、並べたカードの全削除が、<br><br>
+        
+        可能です。<br><br>
+        
+        複数のカードを任意の順番で結合させたり、あるラインから少し遠いラインにカードを移動させたい場合に活躍します。<br><br>imaginary windowに収められたカードはあくまで便宜的な存在ですので、リロードすると消えてしまう点には注意してください。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moremoread2.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moremoread3.png"></div>
+    <div class="col-md-7">
+        <h2>index window</h2><p>index windowでは、プレビュー表示されているテキストの状況が表示されます。現状は総文字数だけですが、カード内に#,##,###によって表現された見出しがある場合は、その見出しだけを列挙したインデックスも合わせて表示させます。インデックスはリンクになっており、クリックすればプレビュー表示が該当箇所までジャンプします。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>inspector window</h2><p>inspector windowは、オーバービュー時でクリックしたカードの詳細が表示されます。文字数に加え、カードの全文がスクロール表示されます。オーバービューモードでは、カードの高さが制限され、全文の確認ができませんので、詳細が必要な場合は、このinspector windowにて確認してください。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moremoread4.png"></div>
+    </div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/moremoread5.png"></div>
+    <div class="col-md-7">
+        <h2>editorial window</h2><p>editorial windowでは、フルスクリーン表示されているテキストの状況が表示されます。現段階では総文字数だけです。また、フルスクリーンモードの背景色およびテキストの色を変更可能です。一度設定を変更すると、リロードされるまではその設定が保持されます。
+        </p>
+    </div></div><!-- /END row -->
+    
+    <h1 style="text-align:center;">mini tips</h1>
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2>todo</h2><p>input　boxでの入力時に、t-- と打ち込んでからカードを作成すると、その部分がチェックボックスになります。また、edit modeでのカードの編集中に、 option + command + t でチェックボックスを挿入可能です。
+        </p>
+    </div>
+    <div class="col-md-5"><img class="featurette-image img-fluid mx-auto" style="width: 500px;" src="image/mini1.png"></div>
+    </div><!-- /END row -->
+    
+       <p style="text-align:center;"><a class="btn btn-lg btn-primary" href="index.html" role="button">Try it!</a></p>
+       
+    <hr class="featurette-divider">
+        
+      
+    
+
+    <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-7">
+        <h2></h2><p>
+        </p>
+    </div></div><!-- /END row -->
+    
+    <div class="row">
+    <div class="col-md-7">
+        <h2></h2><p>
+        </p>
+    </div>
+    <div class="col-md-5"></div>
+    </div><!-- /END row -->
+
+    
+
+    </div><!-- /END THE FEATURETTES -->
+    
+      </div><!-- /.container -->
+
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>2017 tadanori kurashita</p>
+      </footer>
+      
+      </div>
+      
+<div id="senya-rss-reader">
+	<div class="tab-area">
+		<div class="fix-width">
+		    <div  class="toggle-switch" style="text-align:center;">my books</div>
+		</div>
+	</div>
+	<div class="item-area">
+		<div class="fix-width inner">
+			<div class="item">
+				<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B016ZJX4QG/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51Rezm5caUL._SL160_.jpg" alt="EVERNOTE「超」仕事術" style="border: none;" /></a>
+			</div>
+			<div class="item">
+				<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B01EL08HW2/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51i02uyvjAL._SL160_.jpg" alt="EVERNOTE「超」知的生産術" style="border: none;" /></a>
+			</div>
+			
+			<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B01EL08HSG/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51MvEl-7gJL._SL160_.jpg" alt="クラウド時代のハイブリッド手帳術" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00DH84TAE/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51hPGCPKIrL._SL160_.jpg" alt="シゴタノ！手帳術―クラウド＆スマホ×アナログ手帳で人生を楽しく自由にする方法" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B0719S13KQ/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/51iRTqdvRnL._SL160_.jpg" alt="Evernoteとアナログノートによる　ハイブリッド発想術" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00K1E2026/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/517CiZk5JrL._SL160_.jpg" alt="アリスの物語 (impress QuickBooks)" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00VEEJ9XU/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41oyLdAhfmL._SL160_.jpg" alt="Evernote豆技50選 (Espresso Books)" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00YI05M1K/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41qzGeKnNEL._SL160_.jpg" alt="ブログを10年続けて、僕が考えたこと" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4863541953/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/514KoiCNJ1L._SL160_.jpg" alt="ズボラな僕がEvernoteで情報の片付け達人になった理由" style="border: none;" /></a></div>
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B074BT16KC/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/512H6qswm%2BL._SL160_.jpg" alt="かーそる 2017年7月号" style="border: none;" /></a></div>
+
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B01MYMT67Y/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41q6UQkwmxL._SL160_.jpg" alt="かーそる 2016年11月号" style="border: none;" /></a></div>
+
+<div class="item"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B06XTC39LY/rashita1000-22/ref=nosim/" name="amazletlink" target="_blank"><img src="https://images-fe.ssl-images-amazon.com/images/I/41VTeWXKoeL._SL160_.jpg" alt="Dr.Hack (Lifehack Lightnovel)" style="border: none;" /></a></div>
+			
+		</div>
+	</div>
+</div>
+
+
+
+    </main>
+    <script>
+// JavaScript Document
+jQuery(window).load(function() {
+	var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+	jQuery('#senya-rss-reader .item-area').css({
+		'position':'fixed',
+		'bottom': '-'+itemAreaHeight+'px',
+	});
+	jQuery('#senya-rss-reader .tab-area').css({
+		'position':'fixed',
+		'bottom':'-1px',
+	});
+	jQuery('#senya-rss-reader .tab-area .toggle-switch').css({
+		'position':'fixed',
+		'bottom':'-1px',
+	});
+});
+
+
+jQuery(function() {
+	var animateSpeed = 500;
+	var toggle = false;
+	var clickFlg = false;
+	var timer = false;
+	var RSSReaderHeight = jQuery('#senya-rss-reader').innerHeight();
+	
+	jQuery('#senya-rss-reader .tab-area .toggle-switch').click(function() {
+		var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+		clickFlg = true;
+		if ( clickFlg == true && toggle == false ) {
+		    $('.toggle-switch').text('close');
+			jQuery('#senya-rss-reader .item-area').animate({
+				'bottom': '0',
+			},animateSpeed, 'easeOutCubic');
+			jQuery('#senya-rss-reader .tab-area').animate({
+				'bottom': -1+itemAreaHeight+'px',
+			},animateSpeed, 'easeOutCubic');
+			jQuery('#senya-rss-reader .tab-area .toggle-switch').animate({
+				'bottom': -1+itemAreaHeight+'px',
+			},animateSpeed, 'easeOutCubic',
+				function() {
+					toggle = true;
+					clickFlg = false;
+				}
+			);
+			if ( RSSReaderHeight > jQuery(window).height()) {
+					var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+					$('.toggle-switch').text('aaaa');
+					jQuery('#senya-rss-reader .item-area').animate({
+						'bottom': '-'+itemAreaHeight+'px',
+					},animateSpeed, 'easeOutCubic');
+					jQuery('#senya-rss-reader .tab-area').animate({
+						'bottom': '-1px',
+					},animateSpeed, 'easeOutCubic');
+					jQuery('#senya-rss-reader .tab-area .toggle-switch').animate({
+						'bottom': '-1px',
+					},animateSpeed, 'easeOutCubic',
+						function() {
+							toggle = false;
+							clickFlg = false;
+						}	
+					);
+				}
+		} else if ( clickFlg == true && toggle == true ) {
+			var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+			$('.toggle-switch').text('my books');
+			jQuery('#senya-rss-reader .item-area').animate({
+				'bottom': '-'+itemAreaHeight+'px',
+			},animateSpeed, 'easeOutCubic');
+			jQuery('#senya-rss-reader .tab-area').animate({
+				'bottom': '-1px',
+			},animateSpeed, 'easeOutCubic');
+			jQuery('#senya-rss-reader .tab-area .toggle-switch').animate({
+				'bottom': '-1px',
+			},animateSpeed, 'easeOutCubic',
+				function() {
+					toggle = false;
+					clickFlg = false;
+				}	
+			);
+		}
+	});
+	jQuery(window).resize(function() {
+		if (timer !== false) {
+			clearTimeout(timer);
+		}
+		timer = setTimeout(function() {
+			if ( RSSReaderHeight > jQuery(window).height()) {
+				var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+				$('.toggle-switch').text('my books');
+				jQuery('#senya-rss-reader .item-area').animate({
+					'bottom': '-'+itemAreaHeight+'px',
+				},animateSpeed, 'easeOutCubic');
+				jQuery('#senya-rss-reader .tab-area').animate({
+					'bottom': '-1px',
+				},animateSpeed, 'easeOutCubic');
+				jQuery('#senya-rss-reader .tab-area .toggle-switch').animate({
+					'bottom': '-1px',
+				},animateSpeed, 'easeOutCubic',
+					function() {
+						toggle = false;
+						clickFlg = false;
+					}	
+				);
+			}
+		}, 200);
+	});
+	
+	jQuery(window).scroll(function() {
+		if (timer !== false) {
+			clearTimeout(timer);
+		}
+		timer = setTimeout(function() {
+			var scrollHeight = jQuery(document).height();
+			var scrollPosition = jQuery(window).height() + jQuery(window).scrollTop();
+			if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+				
+			var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+			clickFlg = true;
+			if ( clickFlg == true && toggle == false && jQuery(window).height() > RSSReaderHeight ) {
+			    $('.toggle-switch').text('close');
+				jQuery('#senya-rss-reader .item-area').animate({
+					'bottom': '0',
+				},animateSpeed, 'easeOutCubic');
+				jQuery('#senya-rss-reader .tab-area').animate({
+					'bottom': -1+itemAreaHeight+'px',
+				},animateSpeed, 'easeOutCubic');
+				jQuery('#senya-rss-reader .tab-area .toggle-switch').animate({
+					'bottom': -1+itemAreaHeight+'px',
+				},animateSpeed, 'easeOutCubic',
+					function() {
+						toggle = true;
+						clickFlg = false;
+					}
+				);
+				if ( RSSReaderHeight > jQuery(window).height()) {
+				    $('.toggle-switch').text('my books');
+						var itemAreaHeight = jQuery('#senya-rss-reader .item-area').innerHeight();
+						jQuery('#senya-rss-reader .item-area').animate({
+							'bottom': '-'+itemAreaHeight+'px',
+						},animateSpeed, 'easeOutCubic');
+						jQuery('#senya-rss-reader .tab-area').animate({
+							'bottom': '-1px',
+						},animateSpeed, 'easeOutCubic');
+						jQuery('#senya-rss-reader .tab-area .toggle-switch').animate({
+							'bottom': '-1px',
+						},animateSpeed, 'easeOutCubic',
+							function() {
+								toggle = false;
+								clickFlg = false;
+							}	
+						);
+					}
+				}
+			}
+		}, 500);
+	});
+	
+
+});
+</script>
+</body></html>

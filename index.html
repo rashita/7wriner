@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>7wriner</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js'></script>  
+</head>
+
+<body>
+
+<div id="topheader">
+	<div class="menunav"><ul><li><span id ="infoboard">nomal mode</span></li><li id="logo">7wriner<ul class="menuChild"><li>hello! it's menu<hr style="margin:5px 0px;"></li><li><div id="preferencebtn" class="menubtn">preferences…<div><hr style="margin:5px 0px;"></li><li><div id="exportbtn" class="menubtn">full export</div></li><li><a href="#" download="" id="backupDl" class="menubtn">backup download</a></li><li><div id="importbtn" class="menubtn">import&replace</div></li><li><input type="file" id="setfile" accept="application/json"></li><li><hr style="margin:5px 0px;"><div id="allClearbtn" class="menubtn">clear all deta</div><hr style="margin:5px 0px;"><a href="about.html">about&help</a><br>ver.0.9</li><li><hr style="margin:5px 0px;"></li></ul>
+	</li></ul>
+	</div><!-- menunav-->
+</div><!-- topheader-->
+
+<div id="body">
+
+    <div id ="leftBox" class="sortable"></div>
+
+    <div id="mainBox">
+        <div id="wrapper">
+       		<div id="memo" contentEditable="true"></div>
+        	<div id="centerBtnbox"><div id="leftbtn" class="btn btn-success">←</div><div id="Mergebtn" class="btn btn-success">Merge</div><div id="Editbtn" class="btn btn-danger">Edit</div><div id="Keepbtn" class="btn btn-primary">Keep</div><div id="rightbtn" class="btn btn-success btn-xs">→</div></div>
+        </div><!-- wrapperr-->
+        <div id="sortable" class="sortable" style=""></div>
+        <div id="bottomBtnBox">
+        	<div id="clearLinebtn" class="btn btn-danger pull-right">Clear this line</div><div id="clearDonebtn" class="btn btn-info pull-right">Clear Done task</div><div id="Callbtn" class="btn btn-info pull-right">Call</div> <div id="Sendbtn" class="btn btn-success pull-right">Send</div>
+        </div><!-- bottombtnBox-->
+    </div><!-- mainBox-->
+    
+    <div id ="rightBox" class="sortable"></div>
+        
+</div><!--body-->
+
+<div id="footer">copyright rashita 2017</div>
+
+<div id="modal-overview">
+	<div ><span id="switchbtn">line mode</span><span id="modal-close" class="button-link">cancel</span></div>
+	<div id="overview"></div>
+	<p></p>
+</div><!-- modal-overview-->
+
+<div id="modal-preview" style="">
+	<div id="preview" style="margin-left:auto;margin-right;auto;"></div>
+	<input type="button" id="modal-close2"  class="button-link" value="close">
+</div><!-- modal-preview-->
+
+<div id="modal-archiveList" title="Temporary placement">
+	<select name="archiveSelect" id="archiveSelect" size="12" style="width: 300px"></select>
+</div><!-- modal-archiveList-->
+
+<div id="modal-export">
+	<div id="export" style="margin-left:auto;margin-right;auto;"><form><textarea id="exportAre"></textarea><br />
+	<input type="radio" name="exporttype" value="text" checked="checked">text<input type="radio" name="exporttype" value="html">html<input type="radio" name="exporttype" value="opml">opml
+	</form></div>
+	<input type="button" id="modal-close3"  class="button-link" value="close">
+</div><!-- modal-archiveList-->
+
+<div id="modal-preferences">
+	<div id="preferences"><form><p>TaskMode(In TaskMode, executed tasks are not sent down.）</p>
+	<input type="radio" name="setTaskmode" value="on">on
+	<input type="radio" name="setTaskmode" value="off" checked>off
+	</form></div>
+	<input type="button" id="modal-close5"  class="button-link" value="close">
+</div><!-- modal-preferencest-->
+
+<div id="modal-command" style="">
+
+	<div class="windowHead"><span id="windowHeader" style="float:left;">imaginary window</span><div><span style="float:right;"class="close-btn" id="modal-close4">&times;</span><br style="clear:both;"></div></div>
+	
+	<div id = "commanWrapper">
+	<div id="commandline" class="sortable" style="margin-left:auto;margin-right;auto;"></div>
+	<div id="commandMargebtn" class="btn btn-success btn-xs" style="font-size:12px;padding:5px;">Marge</div><div id="commandRecallTopbtn" class="btn btn-info btn-xs" style="font-size:12px;padding:5px;">Recall↑</div><div id="commandRecallBottombtn" class="btn btn-info btn-xs" style="font-size:12px;padding:5px;">Recall↓</div><div id="commandReversebtn" class="btn btn-warning btn-xs" style="font-size:12px;padding:5px;">Reverse</div><div id="commandRandombtn" class="btn btn-default btn-xs" style="font-size:12px;padding:5px;">Random</div><div id="commandDeletebtn" class="btn btn-danger btn-xs" style="font-size:12px;padding:5px;">Delete</div>
+	<br>
+	</div>
+	
+	<div id="indexlineWrapper"><div><span  id="indexlineHeader"></span> chars</div><div id = "indexlineBoard"></div></div>
+	
+	<div id = "inspectorWrapper"><div><span  id="inspectorHeader"></span> chars</div> 
+	<div id = "inspectorBoard"></div></div>
+	
+	<div id = "editorialWrapper"><div><span  id="editorialHeader"></span> chars</div> <div id = "editorialBoard"><label>background-color:<input id="bgcolor-dialog" type="color" value="#ffffff"></label><label>text-color:<input id="textcolor-dialog" type="color" value="#000"></label></div></div>
+</div><!-- modal-command-->
+
+<div id="modal-timer">
+	<div id="timer" style="margin-left:auto;margin-right;auto;"><span id="currentTime"></span><br><span id="countUpTimeHour">0</span>時<span id="countUpTimeMin">0</span>分<span id="countUpTimeSec">0</span>秒</div>
+	<input type="button" id="timertoggle"  class="btn " value="start"><input type="button" id="timerclear"  class="btn " value="clear"><br />
+	<input type="button" id="modal-close6"  class="button-link" value="close">
+</div><!-- modal-timer-->
+
+
+<div id="horizon"></div>
+<script>
+///jqueryスタート
+//localStorage.removeItem("backup") -全削除用
+var archiveText = {};
+var temptop;
+var lineMode; //1,2,3の範囲を動く
+var currentMode = "normal";//normal,edit,merge,fullscreen,overview,previewの値をとる
+
+//タイマー用変数
+var timer1;
+
+///設定変数
+var taskmode = 'off';
+var completeMode = false;
+var fullmodebgcolor = '#FFFefb';//フルスクリーンモードの背景色
+var fullmodetextcolor = '#000000';//フルスクリーンモードの背景色
+changeObject ="";
+
+$(function() {
+
+style = '';//full-screen用の背景色設定クラス
+style += '<style type="text/css" id="StyleId">';
+style += '.fullbgcolor { background-color:#FFFefb; }';
+style += '</style>';
+$('head').append(style);
+
+style2 = '';//full-screen用のテキスト色設定クラス
+style2 += '<style type="text/css" id="StyleId2">';
+style2 += '.fulltextcolor { color:#000; }';
+style2 += '</style>';
+$('head').append(style);
+
+$(".sortable").sortable({
+	connectWith: '.sortable',
+	placeholder: 'ui-state-highlight',
+	distance:10, 
+});			 		        	//distance:100, これを設定するとクリックイベント可能に？
+$("#overview").sortable({
+	 connectWith: '.imaginary-sortable',
+	 update:function(event, ui) {
+			changeObject = true;
+}});
+
+$(window).on('resize', function(){
+		modalResize();
+});
+
+///ロードイベント
+	window.onload = function(){
+    	$("#Mergebtn").hide();
+    	$("#clearLinebtn").hide();
+    	$("#clearDonebtn").hide();
+    	$('#setfile').hide();
+    	$('#modal-command').hide();
+    	$('input[name=exporttype]:eq(0)').prop('checked',true);
+    	modalResize();
+    	$('#infoboard').text("Hello!");
+ 		$('#infoboard').animate({
+     				opacity: 1,
+     				}, 400, function (){
+     					$(this).animate({opacity: 0,},400);	
+     				}     				
+     	);
+        if (localStorage.getItem("backup")){
+                        lineArray = JSON.parse(localStorage.getItem("backup"));
+                        if (localStorage.getItem("drawline")){
+                                                    drawingLine = JSON.parse(localStorage.getItem("drawline"));
+                        }else {
+                             drawingLine =[0,1,2];
+                        }
+                        drawtreeLine();
+                        }else {
+                                lineArray = ["","","","","","",""];//ライン表示用の配列
+                                drawingLineSet = "main";//表示するラインセット管理番号　実験的に
+                                drawingLine = [0,1,2]; //表示されるライン番号管理 
+                        }
+    };
+///キーイベント（nomal mode)
+    $(window).keydown(function(e){
+    		 	var cmdKey = e.metaKey;
+    			if (navigator.platform.indexOf("Win") != -1) {//winでのショートカット
+    				var cmdKey = e.altKey;
+    			}
+    			
+    	    if(cmdKey === true && e.shiftKey === true && e.keyCode === 39){ //コマンドウィンドウを表示
+    				if (!($('#modal-command').css('display') == 'block')){
+    	     			$('#modal-command').show();
+    	     			makeCommandWindow(currentMode);
+    	     		}else{
+    	     			$('#modal-command').hide();
+    	     		}
+            	return false;
+           	 }
+    	
+    		if (!($('#modal-overlay').css('display') == 'block' || $('.ui-widget-overlay').css('display') == 'block')){//モーダルが表示されているときは、以下の操作を禁止
+				if(cmdKey === true && e.keyCode === 69){//ショートカットでエディットモード
+    				inEditMode();
+    			}
+    			if (cmdKey === true && e.shiftKey === true && e.keyCode === 77){//ショートカットでマージモード
+    				inMergeMode();
+    			}
+    			//if (($('#Editbtn').text() == "Edit")) { //以下は編集状態での動作を禁止
+    			if (currentMode == 'normal') { 
+		    	    if(cmdKey === true && e.shiftKey === true && e.keyCode === 83){//隠しセーブコマンド（サーバーにバックアップファイルを生成
+			    	    e.preventDefault();
+			    	    if(!confirm('保存しますか？')){
+			    	    	//キャンセル処理
+			    	    	    	    alert('キャンセルしました');
+			    	    	    	    } else{
+			    	    	    	   	dateSend();
+			    	    	    	   }
+			    	    return false;
+		    	　    }
+		    	    
+			    	    if(cmdKey === true && e.keyCode === 37){ //ラインを右から左方向へ移動
+								e.preventDefault();
+     							e.stopPropagation();
+			    	    		unshiftLine();
+				                return false;
+			            } 
+			            
+			           if(cmdKey === true && e.keyCode === 39){ //ラインを左から右方向へ移動
+			        		   e.preventDefault();
+			        		   e.stopPropagation();
+			       			    shiftLine();
+			                	return false;
+			            }
+			           
+			       }//normalモード限定の処理	
+    		}//モーダル中の操作禁止終了
+    		
+    		if (!(currentMode == 'edit' || currentMode == 'merge' || $('.ui-widget-overlay').css('display') == 'block')) { //以下は編集状態での動作を禁止
+    		
+
+    			if(cmdKey === true && e.shiftKey === true && e.keyCode === 84){ //タイマーウィンドウの表示
+    				$('#currentTime').text(getnowDate());//今の時間
+    				makeOverlay($("#modal-timer"));
+    				return false;
+    			}
+    			
+            	if(cmdKey === true && e.keyCode === 38){ //プレビューを表示
+               	 if ($('#modal-overlay').css('display') == 'block') {//開いていたなら閉じる
+                	if ($('#modal-preview').css('display') == 'block'){
+            		   $("#modal-preview").fadeOut(500,function(){$("#modal-overlay").remove();});
+            		   $(window).scrollTop(temptop);
+            		   currentMode = "normal";
+            		   makeCommandWindow("false");
+            		   }else{
+            		   	$("#modal-overview").fadeOut(500,function(){$("#modal-overlay").remove();});
+            		   	 $(window).scrollTop(temptop);
+            		   	 currentMode = "normal";
+            		   	 makeCommandWindow("false");
+            		   }
+            		    if (changeObject === true){//オーバービューの変更保存処理
+            		    	$(".overColumn").children().removeClass('fixCard');
+            		   	    for (var i = 0; i < $('.overColumn').length; i++){
+            		   			lineArray[i] = $('.overColumn').eq(i).html();
+            		   		}
+            		   		localStorage.setItem("backup", JSON.stringify(lineArray));
+            		   		drawtreeLine();
+            		   		changeObject = false;
+            		   }        		   
+            		   return false;
+            		}else{
+            			currentMode = "preview";
+            			makeCommandWindow("false");
+		            	temptop = $(window).scrollTop();
+		    		    //modalResize();
+		    		    makeOverlay($("#modal-preview"));
+		    		    if ($('.indexColumn').length){
+		    		    	$('.indexColumn').remove();
+		    		    }
+		                var $temp = [];
+		                var $valume = [];
+		                var indexlevel = [];
+		                $temp = $("#sortable .memobox");     
+	                for (var i = 0; i < $temp.length; i++){
+	                	$valume[i] = $temp.eq(i).html();
+	                	$valume[i] = $valume[i].replace(/<input class="taskbox" value="false" type="checkbox">/g,'<img src="image/checkbox.png" style="width:16px;">').replace(/<input class="taskbox" value="true" type="checkbox">/g,'<img src="image/checkboxdone.png" style="width:16px;">');
+	                	if ($valume[i].match(/#{1,3}([^#]+?)(<br>|$)/g)){//インデックスの情報の獲得
+	                		var temparray = [];
+	                		temparray = $valume[i].match(/#{1,3}([^#]+?)(<br>|$)/g);
+	                		for (var l = 0; l < temparray.length; l++){
+	                			indexlevel.push('<li class="indexline">' + temparray[l] + '</li>');
+	                		}
+	                	}
+	                	$valume[i]= '<p>' + $valume[i].replace(/###([^#]+?)(<br>|$)/g, '<h3 class="headline">$1</h3>').replace(/##([^#]+?)(<br>|$)/g, '<h2 class="headline">$1</h2>').replace(/#([^#]+?)(<br>|$)/g, '<h1 class="headline">$1</h1>') + '</p>';
+	                }
+                var $div = $('<div></div>',{
+ 	 			  				addClass:'previewColumn',	
+ 	 			  				width:500,
+ 	 			  				html:$valume,
+    					 	 	});			
+    			if 	(!(indexlevel.length === 0)){
+			 	 	var $index = $('<div></div>',{
+			  				addClass:'indexColumn',	
+			  				html:'<ul>' + indexlevel.join('') + '</ul>',
+			 	 		});			 	 	
+			 	 	$("#indexlineBoard").prepend($index);
+		 	 	} 	 	
+                $("#preview").html($div);
+               	$("#indexlineHeader").text($('#preview').text().length);
+                $(window).scrollTop(0);
+                return false;
+            	} 
+            }//オーバービュー表示の終了
+            
+            if(cmdKey === true && e.keyCode === 40){ //オーバービューを表示
+            	if ($('#modal-overlay').css('display') == 'block') {//開いていたら閉じる
+            		if ($('#modal-overview').css('display') == 'block'){
+            		   $("#modal-overview").fadeOut(500,function(){$("#modal-overlay").remove();});
+            		   $(window).scrollTop(temptop);
+            		   makeCommandWindow("false");
+            		   currentMode = "normal";
+            		   }else{
+            		   	$("#modal-preview").fadeOut(500,function(){$("#modal-overlay").remove();});
+            		   	 $(window).scrollTop(temptop);
+            		   	 makeCommandWindow("false");
+            		   	 currentMode = "normal";
+            		   }    		   
+            		   if (changeObject === true){//変更があったらそれを反映
+            		   		$(".overColumn").children().removeClass('fixCard');
+            		   	    for (var i = 0; i < $('.overColumn').length; i++){
+            		   			lineArray[i] = $('.overColumn').eq(i).html();
+            		   		}
+            		   		localStorage.setItem("backup", JSON.stringify(lineArray));
+            		   		drawtreeLine();
+            		   		changeObject = false;
+            		   }
+            		   return false;
+            	}else{//オーバービュー表示処理
+            		    currentMode = "overview";
+            			temptop = $(window).scrollTop();
+            			makeCommandWindow("false");
+            			if ($('#import').length) {$('#import').remove()};
+	      				makeOverlay($("#modal-overview"));
+	      				$(window).scrollTop(0);
+	      				$("#overview").empty();
+	      				for (var i = 0; i < lineArray.length; i++){
+	      						 	var $div = $('<div></div>',{
+	      						 		addClass:'overColumn',	
+	      						 		'data-num':i,
+	      						 		html:lineArray[i],
+	      							});
+    								$("#overview").append($div);
+    					}
+                 			$("#modal-overlay").fadeIn("slow");
+                 			$("#modal-overview").fadeIn("slow");
+			 		        $(".overColumn").sortable({
+			 		        	placeholder: 'ui-state-highlight',
+			 		        	connectWith: ['.overColumn'],
+			 		        	update:function(event, ui) {
+			 		        		changeObject = true;
+			 		         }});
+			 		         $("#overview").sortable('enable');
+     						 $(".overColumn").sortable('disable');
+			 		         $("#overview .overColumn").addClass('getMargin');
+			 		         $("#overview .overColumn").children().addClass('fixCard');
+			 		         $("#switchbtn").text('line mode');
+      			            return false;
+            	}} //オーバーモード表示の終了
+            	
+            } //編集の禁止の終了 	 	
+            	
+    });//キーボードイベント終了
+///ボタンイベント
+/*
+	$('#footer').click(function(e) {	
+		if(!confirm('保存しますか？')){
+    	    	//キャンセル処理
+    	    	    	    alert('キャンセルしました');
+    	    	    	    } else{
+    	    	    	   	dateSend();
+    	    	    	   }
+    	    return false;
+	});
+*/	
+
+     $('#switchbtn').click(function(e) {//オーバービューのライン・カードスイッチ処理
+          	if ($(this).text() == 'line mode'){
+     				$(this).text('card mode');
+     				$("#overview").sortable('disable');
+     				$(".overColumn").sortable('enable');
+     				$("#overview .overColumn").removeClass('getMargin');
+          	}else{
+     				$(this).text('line mode');
+     				$("#overview").sortable('enable');
+     				$(".overColumn").sortable('disable');
+     				$("#overview .overColumn").addClass('getMargin');
+     			}
+     });
+     $('#rightbtn').click(function(e) {//モバイル用ライン移動ボタン
+     	shiftLine();
+     });
+     $('#leftbtn').click(function(e) {
+     	unshiftLine();
+     });
+     $('#commandMargebtn').click(function(e) {//コマンドウィンドウマージボタン
+     	var temptext = "";
+  	 	$('#commandline .memobox').each(function(index) {
+  	 		temptext += $(this).html() + '<br>';
+		});
+		$('#commandline .memobox:first-child').html(temptext);
+		$('#commandline .memobox:not(:first)').remove();
+ 	 });
+ 	 $('#commandDeletebtn').click(function(e) {//コマンドウィンドウ削除ボタン
+    	$('#commandline').empty();
+ 	 });
+ 	 $('#commandRecallTopbtn').click(function(e) {//コマンドウィンドウリコールボタン（上に戻すか、下に戻すか）（仮に両方実装）
+ 	 	if ($("#sortable div:first").hasClass('lineHead')){
+ 	 		$("#sortable div:first").after($('#commandline').html());
+ 	 	} else{
+ 	 		$('#sortable').prepend($('#commandline').html());
+ 	 	}
+    	$('#commandline').empty();
+ 	 });
+ 	 $('#commandRecallBottombtn').click(function(e) {//コマンドウィンドウリコールボタン（上に戻すか、下に戻すか）
+    	$('#sortable').append($('#commandline').html());
+    	$('#commandline').empty();
+ 	 });
+ 	 $('#commandReversebtn').click(function(e) {//コマンドウィンドウリバースボタン
+    	$('#commandline').html($('#commandline div').get().reverse());
+ 	 });
+ 	 $('#commandRandombtn').click(function(e) {//コマンドウィンドウリバースボタン
+ 	 	var arr = [];
+ 	 	arr = $('#commandline div').get();
+  		arr.sort(function() {
+   			return Math.random() - Math.random();
+   		});
+   		$('#commandline').empty();
+   		$('#commandline').html(arr);
+ 	 });
+	$('#logo').click(function(e){//ロゴメニュー表示
+		$('.menuChild').toggle();
+		setJsonDownload(JSON.stringify(lineArray));//バックアップデータを作成
+
+		//setJsonDownload(JSON.stringify({mainline:lineArray}));//バックアップデータを作成
+	});
+	 $('#timertoggle').click(function(e) {//タイマーボタン
+	 	if ($(this).val() == 'start'){
+	 		$(this).val('stop');
+	 		timer1 = setInterval(countUpStartTimer,1000);
+	 	} else{
+	 		$(this).val('start');
+	 		clearInterval(timer1);
+	 	}
+ 	 });
+ 	 $('#timerclear').click(function(e) {
+ 	 	$('#countUpTimeSec').text("0");
+ 	 	$('#countUpTimeMin').text("0");
+ 	 	$('#countUpTimeHour').text("0");
+ 	 
+ 	 });
+
+    $('#Editbtn').click(function(e) {//エディットボタン
+    	inEditMode();
+ 	 });
+ 	$('#allClearbtn').click(function(e) { //全クリアボタン
+ 		if(!confirm('すべてのライン及びブラウザに保存されたデータ（アーカイブは除く）を破棄します。本当に削除しますか？')){
+ 			return false;
+ 		}else{
+ 				if(!confirm('この操作は取り消せません。本当に、本当に削除しますか？')){
+ 					return false;
+ 				}else{
+ 					if(!confirm('最後の確認です。OKボタンですべて削除します')){
+ 						return false;
+ 					}else{
+ 						//全データを削除
+ 						for (var i = 0; i < lineArray.length; i ++){
+ 							lineArray[i] = "";
+ 						}
+ 						localStorage.removeItem("backup");
+ 						localStorage.removeItem("drawline");
+ 						drawtreeLine();
+ 						alert('データの削除が完了しました');
+ 					}
+ 				}
+ 		}
+ 	});
+ 	$('#importbtn').click(function(e) {//インポートボタン処理
+ 		alert("ダウンロードしたバックアップファイルを選択してください。*.json");
+ 		$('#setfile').click();
+ 		$('#setfile').val("");
+ 	 });
+ 	 $('#clearLinebtn').click(function(e) {//ラインクリアボタン
+ 	 	if(!confirm('本当に削除しますか？')){
+ 	 		return false;
+ 	 		}else{
+ 	 			    	$("#sortable").html("");
+ 	 			    	saveLine();
+ 	 		}
+ 	 });
+ 	 $("#clearDonebtn").click(function(e) {//ラインクリアボタン
+ 	 	if(!confirm('終了済みタスクを削除しますか？')){
+ 	 		return false;
+ 	 		}else{
+ 	 			    	$("#sortable .donetask").remove();
+ 	 			    	saveLine();
+ 	 		}
+ 	 });
+ 	 $('#preferencebtn').click(function(e) {//プレファランスモーダルを開く
+ 		makeCommandWindow("false");
+		makeOverlay($("#modal-preferences"));
+ 	 });
+
+     $('#modal-close').click(function(e) {//オーバービューモーダルを閉じる
+        $("#modal-overview,#modal-overlay").fadeOut("slow",function(){
+	        $("#modal-overlay").remove();
+	        $("#overview .overColumn").children().removeClass('fixCard');
+	        $(window).scrollTop(temptop);
+	         currentMode = "normal";
+	    });
+ 	 });
+ 	 $('#modal-close2').click(function(e) {//プレビューモーダルを閉じる
+        $("#modal-preview,#modal-overlay").fadeOut("slow",function(){
+	        $("#modal-overlay").remove();
+	         $(window).scrollTop(temptop);
+	          currentMode = "normal";
+	    });
+ 	 });
+ 	 $('#modal-close3').click(function(e) {//エクスポート用ダイアログを閉じる
+        $("#modal-export,#modal-overlay").fadeOut("slow",function(){
+	        $("#modal-overlay").remove();
+	        $('input[name=exporttype]:eq(0)').prop('checked',true);
+	    });
+ 	 });
+ 	 $('#modal-close4').click(function(e) {//コマンドウィンドウを閉じる
+ 	 	$('#modal-command').hide();
+ 	 });
+ 	 $('#modal-close5').click(function(e) {//エクスポート用ダイアログを閉じる
+        $("#modal-preferences,#modal-overlay").fadeOut("slow",function(){
+	        $("#modal-overlay").remove();
+	    });
+ 	 });
+ 	 $('#modal-close6').click(function(e) {//タイマー用ダイアログを閉じる
+        $("#modal-timer,#modal-overlay").fadeOut("slow",function(){
+	        $("#modal-overlay").remove();
+	    });
+ 	 });
+ 	 
+ 	 $('#Keepbtn').click(function(e) {//カード作成ボタン
+        makeLine($("#memo").html(),"#sortable");
+ 	 });
+ 	 $('#Sendbtn').click(function(e) {//アーカイブに送信ボタン
+ 	 		sendLine();
+ 	 	    saveLine();
+ 	 });
+ 	$('#exportbtn').click(function(e) {//エクスポート用ダイアログ表示ボタン
+        makeOverlay($("#modal-export"));
+        $('html,body').animate({scrollTop: 0}, 300);
+       	var temp = [];
+       	for (var i = 0; i < lineArray.length; i++){
+       		temp[i] = lineArray[i].replace(/<br><br>/g, "\n\n").replace(/<br><\/div>/g, "\n\n").replace(/<br>/g, "\n").replace(/<div class="memobox lineHead">/g,"").replace(/<div class="memobox">/g,"").replace(/<\/div>/g,"\n\n").replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "").replace(/^\n/,"");
+       	}
+       	temp = temp.join('');
+       	$("#exportAre").val(temp);
+ 	 });
+ 	 $('[name=exporttype]').click(function() {//エクスポートのフォーマットを選択
+	    if ($('input[name=exporttype]:eq(0)').prop('checked')) {
+	    	var temp = [];
+    		for (var i = 0; i < lineArray.length; i++){//text
+    		   	temp[i] = lineArray[i].replace(/<br><br>/g, "\n\n").replace(/<br><\/div>/g, "\n\n").replace(/<br>/g, "\n").replace(/<div class="memobox lineHead">/g,"").replace(/<div class="memobox">/g,"").replace(/<\/div>/g,"\n\n").replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "").replace(/^\n/,"");
+  		    }
+  		    temp = temp.join('');
+	        $("#exportAre").val(temp);
+	    } else if ($('input[name=exporttype]:eq(1)').prop('checked')) {//html
+	    	$("#exportAre").val(lineArray);
+	    } else if ($('input[name=exporttype]:eq(2)').prop('checked')) {//opml
+	    		var temp = [];
+	    		var temphead = '<?xml version="1.0"?>\n<opml version="2.0">\n  <body>\n    ';
+		    	var tempfoot = "</body></opml>";
+		    	var topicfront = "<outline text=\"";
+		    	var topicparentend = "\" >";
+		    	var topicend = "\" />";
+		    	for (var i = 0; i < lineArray.length; i++){//
+		    		temp[i] = lineArray[i].replace(/(<br>){1,}/g, "\n").replace(/<div class="memobox lineHead">/g,"\n").replace(/<div class="memobox">/g,"\n").replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "").replace(/\n/,"").split('\n');
+		    		temp[i][0] = topicfront + temp[i][0] + topicparentend + '\n';
+		    		for (var l = 1; l < temp[i].length; l++){
+		    			if (!(temp[i][l] === "")){
+		    				temp[i][l] = temp[i][l].replace(/^(&nbsp;){1,2}/g,"　").replace(/\"/g,"&quot;");
+		    				temp[i][l] =  "    " + topicfront + temp[i][l] + topicend +'\n';
+		    			}
+		    		}		    				    		
+		    		temp[i].push('</outline>\n');			    	
+		    		temp[i] = temp[i].join('');
+		    	}
+		    	temp.unshift(temphead);
+		    	temp.push(tempfoot);
+		    	var str = temp.join('');
+		    	$("#exportAre").val(str);
+		   }
+	 });
+ 	 $('#Mergebtn').click(function(e) {//マージ状態に移行ボタン
+ 		$('#infoboard').text("merge mode");
+ 		$('#infoboard').animate({
+     				opacity: 1,
+     				}, 400 );
+ 	 	$('#Mergebtn').hide();
+ 	 	$('.Deletebtn').remove();
+ 		$('.fullbtn').remove();
+ 	 					var $btm3 = $('<div></div>',{//ダイレクト追加ボタン
+ 	 						text:'＋',
+ 	 						contentEditable:false,
+ 	 			  			addClass:'plusbtn',	
+ 	 			  			 on: {
+ 	 			  			  		click: function(event) {//マージ処理
+ 	 			  			  		 	var atext = $(this).prev().html();
+ 	 			  			  			var btext = $(this).next().html();
+ 	 			  			  			$(this).prev().html(atext + '<br>' + btext);
+ 	 			  			  			$(this).next().remove();
+ 	 			  			  			$(this).remove();
+    					 	 		}
+    					 	 	 }
+ 	 					});
+ 	 					$('#sortable .memobox').not(':first').before($btm3);
+ 	 });
+ 	 $('#Callbtn').click(function(e) {//アーカイブの呼び出しボタン
+ 	          if (localStorage.getItem('archive')){
+ 	          	archiveText = JSON.parse(localStorage.getItem('archive'));
+ 	          	var keys = [];
+ 	          	if (archiveText) {//アーカイブ連想配列のキーをすべて取得
+ 	          		for (var key in archiveText) {
+ 	          			keys.push(key);
+ 	          		}
+ 	          	}
+ 	          	for (var i = 0; i < keys.length; i++){
+ 	          		$("#archiveSelect").append($('<option />').val(i).html(keys[i]));
+ 	          	}
+ 	          	$("#modal-archiveList").dialog("open"); 	
+            }
+ 	 });	
+ 	 $('.sortable').sortable({//ラインの内容が変われば保存
+              update: function(e, div) {
+                        saveLine();
+              }
+     });
+    $("#memo").keydown(function(e){//入力欄からカードを作成
+        		var cmdKey = e.metaKey;
+    			if (navigator.platform.indexOf("Win") != -1) {//winでのショートカット
+    				var cmdKey = e.altKey;
+    			}
+    			
+    		if (($('#Editbtn').text() == "Edit")) { //編集状態での作成を禁止
+            if(cmdKey === true && e.keyCode === 13){
+            				   e.preventDefault();
+			        		   e.stopPropagation();
+			        		   makeLine($("#memo").html(),"#sortable");
+			        		   return false;
+            }
+            }
+    });
+///ダブルクリックイベント
+    $("#preview").dblclick(function(e) {//ダブルクリックで全選択
+    	selectDomElm(this);
+    });
+///ダイアログ
+    $("#modal-archiveList").dialog({//アーカイブリストを表示
+	    autoOpen: false,  
+	    closeText:"",
+	    width: 500,     
+	    modal: true,
+	    open:function(event, ui){ $(".ui-dialog-titlebar-close").hide();},
+	    buttons: [       
+	      {
+	        text: '呼び出す',
+	        click: function(){
+	          var txt = $('[name=archiveSelect] option:selected').text();
+	          if ($("#sortable:has('div')")){//表示しているラインに要素がある場合はアーカイブに送る
+	          		          sendLine();
+	          }
+	          $("#sortable").html(archiveText[txt]);
+	          saveLine();
+	          $("#archiveSelect").empty();
+	          delete archiveText[txt];
+	          localStorage.setItem('archive', JSON.stringify(archiveText));
+	          $(this).dialog("close");  
+	        }
+	      },
+	      	      {
+	        text: 'テンプレート利用',
+	        click: function(){
+	          var txt = $('[name=archiveSelect] option:selected').text();
+	          $("#sortable").append(archiveText[txt]);
+	          saveLine();
+	           $("#archiveSelect").empty();
+	          $(this).dialog("close");  
+	        }
+	      },
+	      {
+	        text: '削除',
+	        click: function(){
+	          var txt = $('[name=archiveSelect] option:selected').text();
+	          delete archiveText[txt];
+	          localStorage.setItem('archive', JSON.stringify(archiveText));
+	          $("#archiveSelect").empty();
+	          $(this).dialog("close");  
+	        }
+	      },
+	      {
+	        text: 'キャンセル',
+	        click: function(){
+	          $("#archiveSelect").empty();
+	          $(this).dialog("close");
+	        }
+	      }
+	    ]
+	 });
+///onイベント　
+$(document).on('dblclick',".memobox",(function(e){//カードをダブルクリックするとそれをカードに
+	if (currentMode == 'normal'){
+		if ($(this).hasClass('lineHead')){
+			$(this).removeClass('lineHead');
+		}else{
+    		$(this).addClass('lineHead');
+    	}
+    	saveLine();
+    	}
+}));
+$( 'input[name="setTaskmode"]:radio' ).change( function() {  
+    taskmode = $( this ).val();
+    });  
+$("#bgcolor-dialog").on("change", function(){//フルスクリーンモードの背景色変更
+	fullmodebgcolor = $('#bgcolor-dialog').val();
+	$('.full-mode').removeClass('fullbgcolor');
+	$('#StyleId').remove();
+	var style = '';
+	style += '<style type="text/css" id="StyleId">';
+	style += '.fullbgcolor { background-color:';
+	style +=fullmodebgcolor;
+	style +=' }';
+	style += '</style>';
+	$('head').append(style);
+	$('.full-mode').addClass('fullbgcolor');
+});
+$("#textcolor-dialog").on("change", function(){//フルスクリーンモードのテキスト色変更
+	fullmodetextcolor = $('#textcolor-dialog').val();
+	$('.full-mode').removeClass('fulltextcolor');
+	$('#StyleId2').remove();
+	var style = '';
+	style += '<style type="text/css" id="StyleId">';
+	style += '.fullbgcolor { color:';
+	style +=fullmodetextcolor;
+	style +=' }';
+	style += '</style>';
+	$('head').append(style);
+	$('.full-mode').addClass('fulltextcolor');
+});
+$(document).on("click", "#overview .overColumn .memobox", (function(e){//オーバービューでカードの詳細表示
+	$('#inspectorBoard').html($(this).html());
+	$('#inspectorHeader').text($(this).text().replace(/[\n\s　]/g, "").length);
+}));
+$(document).on("focus", ".memobox", (function(e){//カードにフォーカスしたら文字数を表示
+/*
+		$('#infoboard').text(($(this).text().length - 1) + " chars");
+		$('#infoboard').animate({opacity: 1,}, 400 ,function(){
+     							$(this).animate({opacity: 0,},400,function(){
+     								$(this).text('edit mode');
+     								$(this).animate({opacity: 1,},250);});
+     	});
+     	*/
+}));
+///編集モードでのキー入力
+	$(document).on("keydown", ".memobox", (function(e){//編集状態での編集
+	        	var cmdKey = e.metaKey;
+    			if (navigator.platform.indexOf("Win") != -1) {//winでのショートカット
+    				var cmdKey = e.altKey;
+    			}
+    			
+    if (!($('#Editbtn').text() == "Edit")) {//通常状態での操作禁止
+    	if(cmdKey === true && e.keyCode === 66){//command+bでボールドに
+    		e.preventDefault();
+    		document.execCommand('bold',false);
+    	}
+    	if(cmdKey === true && e.altKey === true && e.keyCode === 84){//command+ alt + t でチェックボックス
+    	   	e.preventDefault();
+    		document.execCommand('insertHTML',false,'<input class="taskbox" value="false" type="checkbox">');
+    		return false;
+    	}
+    	if(cmdKey === true && e.altKey === true && e.keyCode === 75){//command+ alt + k でカード分割
+    	   	e.preventDefault();
+    	   	document.execCommand("insertText", false, '---');
+    	   	var $focused = $(':focus')
+    	   	var separatorString = /---+/;
+    	   	var cutText = $focused.html().split(separatorString);
+    	   	var cutPointIndex = $focused.index();
+    	   	$focused.html(cutText[0]);
+    	   	for (var i = 1; i < cutText.length; i++) {
+    	   				makeLine(cutText[i].replace(/^<br>/g,""),cutPointIndex);
+    	   				cutPointIndex++;
+	         }
+	        $('#infoboard').text("Split!");
+	        $('#infoboard').text("Split!").animate({
+     				color: "#000"
+     				}, 600, function (){
+     					$(this).animate({color: "#fff"},600,function (){
+     						$(this).text("edit mode");
+     						$(this).animate({color: "#000"},600);
+     						});	
+     				}     				
+   		  	);
+    		return false;
+    	}
+    	if(cmdKey === true && e.altKey === true && e.keyCode === 81){////command+ alt + q で引用タグ
+    	   	e.preventDefault();
+    		document.execCommand('formatBlock',false,"BLOCKQUOTE");
+    		return false;
+    	}
+    	if(cmdKey === true && e.keyCode === 13 && !($('#modal-overlay').css('display') == 'block') ){//カード編集中に新規カード作成
+    		e.preventDefault();
+    		var $temp = $(this).index();
+    		makeLine("",$temp);
+    		$(this).next().focus();
+    		return false;
+    	}
+       if(cmdKey === true && e.shiftKey === false && e.keyCode === 38 && !($('#modal-overlay').css('display') == 'block') ){//ショートカットにて要素を一つ上に移動
+    		e.preventDefault();
+    		if (!( $(this).index() === 0)){
+    			$($(this).prev()).before($(this));
+    			$(this).focus();
+    		}
+    		return false;
+    	}
+    	if(cmdKey === true && e.shiftKey === false && e.keyCode === 40 && !($('#modal-overlay').css('display') == 'block') ){//ショートカットにて要素を一つ下に移動
+    		e.preventDefault();
+    		if (!($(this).index() === $("#sortable").children().length)){
+    			$($(this).next()).after($(this));
+    			$(this).focus();
+    		}
+    		return false;
+    	}
+ 		if (!($(this).hasClass('full-mode'))){
+ 			if(cmdKey === true && e.shiftKey === false && e.keyCode === 39){//ショートカットにて要素を右のラインに移動
+    		e.preventDefault();
+    		if ($('#modal-command').css('display') == 'block'){
+    			$(this).children('.Deletebtn').remove();
+    			$('#commandline').prepend($(this));
+    		}else{
+    			$( "#rightBox" ).prepend($(this));
+    		}
+    		return false;
+    	}
+    	if(cmdKey === true && e.keyCode === 37){//ショートカットにて要素を左のラインに移動
+    		e.preventDefault();
+    		$( "#leftBox" ).prepend($(this));
+
+    	}
+ 		}
+    }//normal modeでの編集禁止終了
+	}));
+	$(document).on("dblclick", ".memobox", (function(e){//ダブルクリックでフルスクリーンモードへ移行;
+		if (!($('#Editbtn').text() == "Edit") && !($('#modal-overlay').css('display') == 'block') ) {//通常状態での編集禁止
+			makefullscreen($(this));
+			makeCommandWindow("false");
+			currentMode = "fullscreen";
+		}
+	}));
+	$("#sortable").on("change", 'input[type="checkbox"]', function(){//チェックボックスクリック時
+		if (($(".memobox input[type=checkbox]:not(:checked)").size()) == 0){
+						//全タスクの終了というような処理
+		} 
+		if ($(this).is(':checked')) {
+			$(this).val('true');
+			
+			if (completeMode == true){//将来的に実装予定
+				var $linediv = $('<div class=horizon></div>');
+				var tempoffset = $(this).offset();
+				$linediv.offset({top: tempoffset.top + 4 , left: tempoffset.left + 12});
+		      	$(this).parent().append($linediv);
+				winW = $(this).parent().width() - 20;
+				    spped = 300;
+				 $linediv.animate({
+	    			    width: winW
+	 			   }, spped);
+ 			  }
+			if (($(this).parent().find("input[type=checkbox]:not(:checked)").size()) == 0){//すべてがチェックされたときの処理
+
+				$(this).parent().animate({ 
+				    opacity: 0.5, }, 400 ,function(){
+				    				if (taskmode == 'off'){//タスクモードがオフなら、完了タスクを下に送る
+				    					$("#sortable").append($(this));
+				    				}
+				    				$(this).addClass('donetask');
+									$(this).append(getnowDate());
+									$(this).css('opacity','1');
+									saveLine();
+				    });
+
+			} //すべてがチェックされたときの処理終了		
+		} else {
+			$(this).val('false');
+			$(this).parent().removeClass('donetask');
+		}
+					saveLine();
+
+	});
+	$(document).on("click", ".indexline",  function(){//プレビューのインデックスリンク処理
+		var temptop =  $('.headline').eq($(this).index()).offset().top;
+		$(window).scrollTop(temptop);
+	});
+	$('#setfile').change(function() {//ローカルからのファイルアップロード
+
+		var file = $("#setfile")[0].files[0];
+		var reader;
+		reader = new FileReader();
+		reader.onload = onLoad;
+		function onLoad(event) {
+			var temp =JSON.parse(event.target.result);
+			if (temp['mainline'] ){//セットになっているバックアップデータ
+				var temp =temp['mainline'];
+			} else{//セットになっていないバックアップデータ
+				var temp =JSON.parse(event.target.result);
+			}
+			if(window.confirm('全ラインをファイルデータに置き換えます。現在表示されているラインは失われますがよろしいですか？')){
+							alert('プレビューを表示しますので、問題なければImportボタンをどうぞ。');
+				            //var temp =JSON.parse(event.target.result);
+				            if ($('#import').length){$('#import').remove();}
+				            makeOverlay($("#modal-overview"));
+	      					$("#overview").empty();
+	      						 for (var i = 0; i < temp.length; i++){
+	      						 	var $div = $('<div></div>',{
+	      						 		addClass:'overColumn',	
+	      						 		width:200,
+	      						 		html:temp[i],
+	      						 });
+    					 		$("#overview").append($div);
+    					 	 }
+    					 	 var $btn = $('<div></div>',{
+	      						 		addClass:'btn btn-danger',	
+	      						 		id: 'import',
+	      						 		text:'Import',
+	      						 		on:{
+	      						 			click:function(event){
+	      						 				for (var i = 0; i < $("#overview .overColumn").length; i++){
+	      						 					lineArray[i] = $("#overview .overColumn").eq(i).html();
+	      						 				}
+	      						 				localStorage.setItem("backup", JSON.stringify(lineArray));
+	      						 				drawtreeLine();
+	      						 				$("#modal-overlay").fadeOut("slow");
+	      						 				$("#modal-overview").fadeOut("slow");
+	      						 				$("#modal-overlay").remove();
+	      						 				$(this).remove();
+	      						 			}
+	      						 		}
+	      						 });
+	      					$("#modal-overview").prepend($btn);
+                 			$("#modal-overlay").fadeIn("slow");
+                 			$("#modal-overview").fadeIn("slow");
+				}else{
+					alert('キャンセルしました。Good Luck!'); 
+				}
+        }
+		reader.readAsText(file);    
+	});
+	
+///fuction部門
+    function makeLine(aText,aPost){//新しいカードを作成
+    	aText = aText.replace(/t--([^-])/g,'<input class="taskbox" value="false" type="checkbox">$1');
+  		var $div = $('<div></div>', {
+  			addClass:'memobox',	
+  			});
+ 		$div.html(aText);
+ 		if (aPost === "#sortable"){
+ 			if ($("#sortable div:first").hasClass('lineHead')){
+    			$("#sortable div:first").after($div);
+    		}else{
+    			$("#sortable").prepend($div); 
+    		}
+ 			$("#memo").html("");
+ 			$("#sortable").sortable();
+ 		}else{
+ 			$("#sortable .memobox").eq(aPost).after($div);
+ 			aPost++;
+ 			$("#sortable .memobox").eq(aPost).attr('contentEditable', true);
+ 			$("#sortable").sortable();
+ 		}
+ 		saveLine();
+    }
+    function saveLine(){//三本のラインを保存
+        lineArray[drawingLine[1]] = $("#sortable").html();
+        lineArray[drawingLine[0]] = $("#leftBox").html(); 
+        lineArray[drawingLine[2]] = $("#rightBox").html();
+
+        localStorage.setItem("backup", JSON.stringify(lineArray));
+    }
+    function drawtreeLine(){ //数字を一つ与えたら、それをベースに描写する、計算もそのときに行うというのではどうか？
+        $("#sortable").html(lineArray[drawingLine[1]]);
+        $("#leftBox").html(lineArray[drawingLine[0]]); 
+        $("#rightBox").html(lineArray[drawingLine[2]]); 
+        $("input[type=checkbox][value='true']").prop("checked",true);
+        //$('.donetask').children('.taskbox').attr('checked', 'checked');
+    }
+    function makeOverlay($modal){//オーバーレイの生成及び表示
+    	var $overlay = $('<div></div>',{
+	      						 		id:'modal-overlay',	
+	      						 		on: {
+		      						 			click: function(event) {//クリックしたらモーダルを閉じる
+		      						 			        $modal.fadeOut("slow");
+		      						 			         currentMode = "normal";
+		      						 			        $(this).fadeOut("slow",function(){
+		      						 			        	 $(this).remove();
+		      						 			        	 $(window).scrollTop(temptop);
+		      						 			         });
+			    					 	 		}}
+	      				});
+	    $("body").append($overlay);
+	    $overlay.fadeIn("slow");
+        $modal.fadeIn("slow");
+    }
+    function makefullscreen(obj){//フルスクリーンモードへの移行
+    		$("body").append('<div id="modal-overlay"></div>');
+			obj.addClass('full-mode fullbgcolor fulltextcolor');
+			$('.Deletebtn').hide();
+			$("#modal-overlay").fadeIn("slow");
+			var $btm2 = $('<div></div>',{//キャンセルボタン
+ 	 						width: 10,
+ 	 						text:'▽',
+ 	 						'font-size':'5px',
+ 	 						contentEditable:false,
+ 	 			  			addClass:'fullbtn btn btn-primary btn-circle btn-xs',	
+ 	 			  			 on: {
+ 	 			  			  		click: function(event) {//ボタン表示の切り替え
+    					 	 				$("#modal-overlay").remove();
+    					 	 				makeCommandWindow("false");
+    					 	 				currentMode = "edit";
+    					 	 				$(this).parent().removeClass('full-mode fullbgcolor fulltextcolor');
+    					 	 					 		$(".sortable").sortable({
+    					 	 					 			 connectWith: '.sortable'
+    					 	 					 		 });
+    					 	 				$('.Deletebtn').show();
+    					 	 				$(window).scrollTop(temptop);
+    					 	 				$(this).remove();
+
+    					 	 		}
+    					 	 		}
+ 	 						});
+ 	 		obj.prepend($btm2);
+ 	 		$('#editorialHeader').text(obj.text().length - 2);
+ 	 		temptop = $(window).scrollTop();
+ 	 		$(window).scrollTop(0);
+    }
+    function makeCommandWindow(mode){//コマンドウィンドウの表示切り替え
+    	if (mode == "false"){
+    		 $('#modal-command').hide();
+    	}else {
+    		 if (mode == "preview"){
+    		 	$('#commanWrapper').hide();
+    		 	$('#inspectorWrapper').hide();
+    		 	$('#editorialWrapper').hide();
+    		 	$('#indexlineWrapper').show();
+    		 	$('#windowHeader').text("index window");
+    	}else if(mode == "normal"){
+    		$('#commanWrapper').show();
+    		$('#inspectorWrapper').hide();
+    		$('#editorialWrapper').hide();
+    		$('#indexlineWrapper').hide();
+    		$('#windowHeader').text("imaginary window");
+    	    	}else if(mode == "edit"){
+    		$('#commanWrapper').show();
+    		$('#inspectorWrapper').hide();
+    		$('#editorialWrapper').hide();
+    		$('#indexlineWrapper').hide();
+    		$('#windowHeader').text("imaginary window");
+    	}else if(mode == "merge"){
+    		$('#commanWrapper').show();
+    		$('#inspectorWrapper').hide();
+    		$('#editorialWrapper').hide();
+    		$('#indexlineWrapper').hide();
+    		$('#windowHeader').text("imaginary window");
+    		}else if(mode == "fullscreen"){
+    		$('#commanWrapper').hide();
+    		$('#indexlineWrapper').hide();
+    		$('#inspectorWrapper').hide();
+    		$('#editorialWrapper').show();
+    		$('#editorialHeader').text($('.full-mode').text().length - 2);
+    		$('#windowHeader').text("editorial window");
+    	}else if (mode == "overview"){
+    		$('#commanWrapper').hide();
+    		$('#indexlineWrapper').hide();
+    		$('#inspectorWrapper').show();
+    		$('#editorialWrapper').hide();
+    		$('#windowHeader').text("inspector window");
+    	}
+    	 $('#modal-command').show();
+    	 }
+    }    	     			
+    function countUpStartTimer(){
+    	var t = parseInt($('#countUpTimeSec').text());
+    	var m = parseInt($('#countUpTimeMin').text());
+    	var h = parseInt($('#countUpTimeHour').text());
+
+    	t = t +1;
+    	if (t == 60){
+    		m = m + 1;
+    		t = 0 ;
+    	}
+    	if (m == 60){
+    		h = h + 1;
+    		m = 0;
+    	}
+    	$('#countUpTimeSec').text(t);
+    	$('#countUpTimeMin').text(m);
+    	$('#countUpTimeHour').text(h);
+
+    }
+    function modalResize(){//画面サイズから中央配置 リサイズ対応
+          var w = $(window).width();
+          var h = $(window).height();
+          if (w < 512){
+          	lineMode = 1;
+          	}else if (w < 1024){
+          		lineMode = 2;
+          } else{
+          	lineMode = 3;
+          }
+          if (lineMode == 3){
+ 				 					$('#leftbtn').hide();
+ 				 					$('#rightbtn').hide();
+ 				 				} 			
+          var cw = $("#modal-preview").outerWidth();
+          var ch = $("#modal-preview").outerHeight();
+          var boardSize = $("#infoboard").width();
+          $("#modal-preview").css({
+                "left": ((w - cw)/2) + "px",
+          });
+          $("#modal-export").css({
+                "left": ((w - cw)/2) + "px",
+          });
+          $("#infoboard").css({
+                "margin-right": ((w/2) - boardSize - 100) + "px",
+          });
+          $("#modal-command").css({
+                "width":((w/3.5))+ "px",
+                "left": (w - $("#modal-command").width() - 50) + "px",
+          });
+     }
+     function selectDomElm(obj){//テキストの全選択
+	  var range = document.createRange();
+	  range.selectNodeContents(obj);
+	  var selection = window.getSelection();
+	  selection.removeAllRanges();
+	  selection.addRange(range);
+	}
+	function sendLine(){//ラインをアーカイブに移動
+		if (!($("#sortable").html() === "" )){//メインラインが空でなければ保存
+			  var lineName = $("#sortable div:first").text().substr(0, 30);
+ 	          archiveText[lineName] =  $("#sortable").html();
+ 	 	   	  localStorage.setItem('archive', JSON.stringify(archiveText));
+ 	 	      $("#sortable").html("");
+ 	 	  }
+ 	}
+ 	function getnowDate(){//現在時刻を返す
+			var dt = new Date();
+			var year = dt.getFullYear();
+			var month = dt.getMonth()+1;
+			var date = dt.getDate();
+			var hours = dt.getHours();
+			var minutes = dt.getMinutes();
+			var seconds = dt.getSeconds();
+			return " " + year+"/"+month+"/"+date+"-"+hours+":"+minutes+":"+seconds;
+	}
+	function getSaveDate(){//バックアップ用の日付処理
+			var dt = new Date();
+			var year = dt.getFullYear();
+			var month = dt.getMonth()+1;
+			var date = dt.getDate();
+			var hours = dt.getHours();
+			var minutes = dt.getMinutes();
+			var seconds = dt.getSeconds();
+			return "" + year +month+ date;
+	}
+    function inEditMode(){
+     		if ( $('#Editbtn').text() == "Edit" ){//edit mode 開始
+     			currentMode = 'edit';
+     			$('#infoboard').text("edit mode");
+     			$('#infoboard').animate({
+     				opacity: 1,
+     				}, 400 );
+     			$('#Editbtn').text("End");
+     			$('#leftbtn').hide();
+     			$('#rightbtn').hide();
+ 				$('#Keepbtn').hide();
+ 				$('#Callbtn').hide();
+ 			 	$('#Sendbtn').hide();
+ 			 	$('#Mergebtn').show();
+ 			 	$('#clearLinebtn').show();
+ 			 	$("#clearDonebtn").show();
+ 				$("#sortable").sortable("disable");
+ 				 	 		var $delbtn = $('<div></div>',{//デリートボタン
+ 	 						width: 13,
+ 	 						text:'×',
+ 	 						'font-size':'8px',
+ 	 						contentEditable:false,
+ 	 			  			addClass:'Deletebtn btn btn-danger btn-circle btn-xs',	
+ 	 			  			 on: {
+ 	 			  			  		click: function(event) {
+    					 	 			$(this).parent().remove();
+    					 	 		}
+    					 	 	 }
+ 	 						});
+ 	 						var $btnset = $('<div></div>',{//ボタン用拡大領域
+ 	 						text:'',
+ 	 						'font-size':'5px',
+ 	 						contentEditable:false,
+ 	 			  			addClass:'btnset',	
+ 	 						});
+ 	 						var $btn1 = $('<div></div>',{//モバイル用削除ボタン
+ 	 						text:'×',
+ 	 						'font-size':'3px',
+ 	 						contentEditable:false,
+ 	 						title:'delete',
+ 	 			  			addClass:'btn cardbtn',	
+ 	 			  			 on: {
+ 	 			  			  		click: function(event) {//
+ 	 			  			  			$(this).parent().next().remove();
+ 	 			  			  			$(this).parent().remove();
+    					 	 		}
+    					 	 		}
+ 	 						});
+ 	 						var $btn2 = $('<div></div>',{//モバイル用full mode ボタン
+ 	 						text:'△',
+ 	 						contentEditable:false,
+ 	 						title:'full screen',
+ 	 			  			addClass:'btn cardbtn',	
+ 	 			  			 on: {
+	 	 			  			 	click: function(event) {
+	 	 			  			 		makefullscreen($(this).parent().next());
+	 	 			  			 	}
+						 	 		}
+ 	 						});
+ 	 						var $btn3 = $('<div></div>',{//モバイル用新規カードを上に追加ボタン
+ 	 						text:'+',
+ 	 						contentEditable:false,
+ 	 						title:'add newcard',
+ 	 			  			addClass:'btn cardbtn',	
+ 	 			  			 on: {
+ 	 			  			  		click: function(event) {//
+ 	 			  			  		  		var $div = $('<div></div>', {
+ 	 			  			  		  			addClass:'memobox',	
+ 	 			  			  		  			'contentEditable':true,
+ 	 			  			  		  		});
+ 	 			  			  		$(this).parent().before($div);
+    					 	 		}
+    					 	 		}
+ 	 						});
+ 	 						var $btn4 = $('<div></div>',{//モバイル用ヘッダー設定ボタン
+ 	 						text:'■',
+ 	 						contentEditable:false,
+ 	 						title:'set headline',
+ 	 			  			addClass:'btn cardbtn',	
+ 	 			  			 on: {
+ 	 			  			  		click: function(event) {//
+ 	 			  			  			if ($(this).parent().next().hasClass('lineHead')){
+ 	 			  			  				$(this).parent().next().removeClass('lineHead');
+ 	 			  			  			}else{
+ 	 			  			  				$(this).parent().next().addClass('lineHead');
+ 	 			  			  			}
+    					 	 		}
+    					 	 		}
+ 	 						});
+				$btnset.append($btn1);
+				$btnset.append($btn2);
+				$btnset.append($btn3);
+				$btnset.append($btn4);
+ 	 			if (!(lineMode == 3)){
+ 	 				$( "#sortable" ).children().before($btnset);
+ 	 			}else{
+ 	 				$( '#sortable .memobox' ).prepend($delbtn);
+ 	 			}
+ 	 			$('.memobox').attr('contentEditable', true);
+ 	 			$('.memobox').attr('tabIndex', 0);		
+ 			} else{//エディット終了
+ 				outEditMode();
+ 			}
+    } 
+    function outEditMode(){
+    	 						$('#Mergebtn').hide();
+ 								$('#infoboard').text("nomal mode");
+ 								$('#infoboard').animate({
+ 									opacity: 0,
+ 									}, 300 );
+ 				 				$('#Editbtn').text("Edit");
+ 				 				$('#Keepbtn').show();
+ 				 				$('#Callbtn').show();
+ 				 				$('#Sendbtn').show();
+ 				 				if (!(lineMode == 3)){
+ 				 					$('#leftbtn').show();
+ 				 					$('#rightbtn').show();
+ 				 				} 
+ 				 				$('#clearLinebtn').hide();
+ 				 				$("#clearDonebtn").hide();
+ 				 				$( "#sortable" ).sortable("enable");
+ 				 				$('.Deletebtn').remove();
+ 				 				$('.btnset').remove();
+ 				 				$('.plusbtn').remove();
+ 				 				$('.fullbtn').remove();
+ 				 				$('.memobox').removeAttr('contentEditable');
+ 				 				$('.memobox').removeAttr('style');
+ 				 				$('.memobox').removeAttr('tabIndex');
+ 				 				$('.memobox').removeAttr('data-evernote-id');
+ 				 				$('.memobox').removeClass('padding-left ui-sortable-handle fixCard js-evernote-checked');
+ 				 				$('.taskbox').removeClass('js-evernote-checked');
+ 				 				$('.taskbox').removeAttr('data-evernote-id');
+ 				 				$('.memobox').blur();
+ 				 				currentMode = 'normal';
+ 				 				saveLine();
+    }
+    function inMergeMode(){//マージモード移行処理
+    	if (currentMode ==  'merge'){
+    		outEditMode();//ノーマルモードへ移行
+    	}else if  (currentMode ==  'normal' ||  (currentMode ==  'edit' )){ // normal && editモードでの処理
+    		if (currentMode ==  'normal' ){
+    			inEditMode();//一度エディットモードを経由 			
+    		}
+    		currentMode = 'merge';
+    		$('#infoboard').text("merge mode");
+	 		$('#infoboard').animate({
+	     				opacity: 1,
+	     				}, 400 );
+	 	 	$('#Mergebtn').hide();
+	 	 	$('.Deletebtn').remove();
+	 		$('.fullbtn').remove();
+	 	 					var $btm3 = $('<div></div>',{//ダイレクト追加ボタン
+	 	 						text:'＋',
+	 	 						contentEditable:false,
+	 	 			  			addClass:'plusbtn',	
+	 	 			  			 on: {
+	 	 			  			  		click: function(event) {//マージ処理
+	 	 			  			  		 	var atext = $(this).prev().html();
+	 	 			  			  			var btext = $(this).next().html();
+	 	 			  			  			$(this).prev().html(atext + '<br>' + btext);
+	 	 			  			  			$(this).next().remove();
+	 	 			  			  			$(this).remove();
+	    					 	 		}
+	    					 	 	 }
+	 	 					});
+	 	 	$('#sortable .memobox').not(':first').before($btm3); 	    		
+    	}		
+}
+
+
+    
+///backupデータ関係
+    function setJsonDownload(send_data){//ダウンロード用のファイルを設定
+
+    	  var filename ="download" + getSaveDate() + ".json";
+		  var blob = new Blob([send_data], {type: 'application\/json'});
+		  var url = window.URL.createObjectURL(blob);
+		  document.getElementById("backupDl").href = url;
+		  document.getElementById("backupDl").download = filename;
+    }
+    function dateSend(){//サーバーにバックアップデータを作成
+          var send_data = JSON.stringify(lineArray);
+           $.ajax({
+		        url: "filefunction.php", // 送信先のPHP
+		        type: "POST", // POSTで送る
+		        contentType: "Content-Type: application/json; charset=UTF-8",    
+		        //dataType: 'json', //受信形式 必須ではなさそうだがサーバ側との整合のために明示しておいた方がよい。
+		        data:send_data, //JSON形式の送信データ
+		        success: function(data) {
+  				  //alert('保存しました');
+  				 }
+		    });
+    }
+///フリック、マウスイベント対応
+  $('#centerBtnbox').on('touchstart', onTouchStart); //指が触れたか検知
+  $('#centerBtnbox').on('touchmove', onTouchMove); //指が動いたか検知
+  $('#centerBtnbox').on('touchend', onTouchEnd); //指が離れたか検知
+  $('#centerBtnbox').on('mousedown', dummyMousedown); 
+  $('#centerBtnbox').on('mousemove', dummyTouchMove); 
+  $('#centerBtnbox').on('mouseup', dummyTouchEnd); 
+  var direction, position;
+  
+  function dummyMousedown(event){
+  	Cposition = getMousePosition(event);
+    direction = ''; //一度リセットする
+  }
+ function dummyTouchMove(event){
+ 	if (Cposition - getMousePosition(event) > 30) { // 50px以上移動しなければスワイプと判断しない
+      direction = 'left'; //左と検知
+    } else if (Cposition - getMousePosition(event) < -30){  // 50px以上移動しなければスワイプと判断しない
+       direction = 'right'; //右と検知
+    }
+  }
+  function  dummyTouchEnd(event) {
+  	    if (direction == 'right'){
+  	    	shiftLine();
+  	    	} else if (direction == 'left'){
+  	    		unshiftLine();
+  	   }
+  }
+  //スワイプ開始時の横方向の座標を格納
+  function onTouchStart(event) {
+    Cposition = getPosition(event);
+    direction = ''; //一度リセットする
+  }
+  //スワイプの方向（left／right）を取得
+  function onTouchMove(event) {
+    if (Cposition - getPosition(event) > 70) { // 70px以上移動しなければスワイプと判断しない
+      direction = 'left'; //左と検知
+    } else if (Cposition - getPosition(event) < -70){  // 70px以上移動しなければスワイプと判断しない
+      direction = 'right'; //右と検知
+    }
+  }
+  function onTouchEnd(event) {
+    if (direction == 'right'){
+    	shiftLine()
+    } else if (direction == 'left'){
+    	unshiftLine();
+    }
+  }
+  //横方向の座標を取得
+  function getPosition(event) {
+    return event.originalEvent.touches[0].pageX;
+  }
+   function getMousePosition(event) {
+    return event.pageX;
+  }
+  function shiftLine(){//ライン移動の処理
+    				var $div = $('<div></div>',{//移動表現用アイコンを作成
+ 	 						text:'|',
+ 	 						color:'#000',
+ 	 			  			addClass:'movingPole',	
+    					 	 		}
+ 	 						);
+ 	 				$div.offset({ top: 0, left: ($(window).width()/2)});
+ 	 				$('#topheader').append($div);
+            		$('.movingPole').animate({
+            			left:'-=25px',
+     				}, 300, function() {// アニメーション完了後に実行する処理
+     					$(this).animate({
+     						opacity: 0,
+     						},250, function(){
+     							$('.movingPole').remove;
+     							});
+     				});     				
+             		for (var i = 0; i < drawingLine.length; i++) {
+                    	drawingLine[i]++;
+                     	if (drawingLine[i] > (lineArray.length - 1)) {
+                        	drawingLine[i] = 0;
+                        }
+                    }
+                	localStorage.setItem("drawline", JSON.stringify(drawingLine));
+               		drawtreeLine();
+                	saveLine();
+                	if ($(window).scrollTop() > 400){
+	                	$('html,body').animate({scrollTop: 0}, 300);
+	                }
+	                $("title").text($('#sortable div:first').text()+ '-7wriner');
+  }
+  function unshiftLine(){
+  	  	           	var $div = $('<div></div>',{//移動表現用アイコンを作成
+ 	 						text:'|',
+ 	 						color:'#000',
+ 	 			  			addClass:'movingPole',	
+    					 	 		}
+ 	 						);
+ 	 				$div.offset({ top: 0, left: ($(window).width()/2)});
+ 	 				$('#topheader').append($div);
+            		$('.movingPole').animate({
+            			left:'+=25px',
+     				}, 300, function() {// アニメーション完了後に実行する処理
+     					$(this).animate({
+     						opacity: 0,
+     						},250, function(){
+     							$('.movingPole').remove;
+     							});
+     				});    
+	                for (var i = 0; i < drawingLine.length; i++) {
+	                     drawingLine[i]--;
+	                     if (drawingLine[i] < 0 ) {
+	                        drawingLine[i] = (lineArray.length - 1);
+	                    }
+	                }
+	                localStorage.setItem("drawline", JSON.stringify(drawingLine));
+	                drawtreeLine();
+	                saveLine();
+	                if ($(window).scrollTop() > 400){
+	                	$('html,body').animate({scrollTop: 0}, 300);
+	                }
+	                $("title").text($('#sortable div:first').text() + '-7wriner');
+	        }
+});
+
+</script>
+<!-- Example: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+</body>
+</html>

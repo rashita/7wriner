@@ -209,17 +209,17 @@ $(window).on('resize', function(){
     			}
     			//if (($('#Editbtn').text() == "Edit")) { //以下は編集状態での動作を禁止
     			if (currentMode == 'normal') { 
+    			/*
 		    	    if(cmdKey === true && e.shiftKey === true && e.keyCode === 83){//隠しセーブコマンド（サーバーにバックアップファイルを生成
 			    	    e.preventDefault();
 			    	    if(!confirm('保存しますか？')){
-			    	    	//キャンセル処理
 			    	    	    	    alert('キャンセルしました');
 			    	    	    	    } else{
 			    	    	    	   	dateSend();
 			    	    	    	   }
 			    	    return false;
 		    	　    }
-		    	    
+		    	    */
 			    	    if(cmdKey === true && e.keyCode === 37){ //ラインを右から左方向へ移動
 								e.preventDefault();
      							e.stopPropagation();
@@ -880,9 +880,21 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
 	    			    width: winW
 	 			   }, spped);
  			  }
-			if (($(this).parent().find("input[type=checkbox]:not(:checked)").size()) == 0){//すべてがチェックされたときの処理
+ 			  //chromeとfirefoxではdivの作り方が違うので親の位置がずれる
+ 			  //カード作成時にdivが含まれていたら、それを消してbrにする？
+ 			  //しかしカード作成後の編集で同じ事になる。
+ 			var userAgent = window.navigator.userAgent.toLowerCase();
+ 			if(userAgent.indexOf('chrome') != -1) {
+ 				var unchecknum = $(this).parent().parent().find("input[type=checkbox]:not(:checked)").size();
+ 				var parentdiv = $(this).parent().parent();
+			} else{
+				var unchecknum = $(this).parent().find("input[type=checkbox]:not(:checked)").size();
+				var parentdiv = $(this).parent();
+			}
+			
+			if (unchecknum == 0){//すべてがチェックされたときの処理
 
-				$(this).parent().animate({ 
+				parentdiv.animate({ 
 				    opacity: 0.5, }, 400 ,function(){
 				    				if (taskmode == 'off'){//タスクモードがオフなら、完了タスクを下に送る
 				    					$("#sortable").append($(this));
@@ -892,8 +904,7 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
 									$(this).css('opacity','1');
 									saveLine();
 				    });
-
-			} //すべてがチェックされたときの処理終了		
+				} //すべてがチェックされたときの処理終了				
 		} else {
 			$(this).val('false');
 			$(this).parent().removeClass('donetask');

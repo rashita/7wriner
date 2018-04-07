@@ -457,7 +457,6 @@ $(window).on('resize', function(){
  	 	$('#countUpTimeSec').text("0");
  	 	$('#countUpTimeMin').text("0");
  	 	$('#countUpTimeHour').text("0");
- 	 
  	 });
 
     $('#Editbtn').click(function(e) {//エディットボタン
@@ -1362,10 +1361,11 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
     function setJsonDownload(send_data){//ダウンロード用のファイルを設定
 
     	  var filename ="download" + getSaveDate() + ".json";
-		  var blob = new Blob([send_data], {type: 'application\/json'});
-		  var url = window.URL.createObjectURL(blob);
+		  var blob = new Blob([send_data], {"type": "application\/json;charset=UTF-8"});
+		  var url = (window.URL || window.webkitURL).createObjectURL(blob);
 		  document.getElementById("backupDl").href = url;
 		  document.getElementById("backupDl").download = filename;
+
     }
     function dateSend(){//サーバーにバックアップデータを作成
           var send_data = JSON.stringify(lineArray);

@@ -24,7 +24,7 @@
 <body>
 
 <div id="topheader">
-	<div class="menunav"><ul><li><span id ="infoboard">nomal mode</span></li><li id="logo">7wriner<ul class="menuChild"><li>hello! it's menu<hr style="margin:5px 0px;"></li><li><div id="preferencebtn" class="menubtn">preferences…<div><hr style="margin:5px 0px;"></li><li><div id="exportbtn" class="menubtn">full export</div></li><li><a href="#" download="" id="backupDl" class="menubtn">backup download</a></li><li><div id="importbtn" class="menubtn">import&replace</div></li><li><input type="file" id="setfile" accept="application/json"></li><li><hr style="margin:5px 0px;"><div id="allClearbtn" class="menubtn">clear all deta</div><hr style="margin:5px 0px;"><a href="about.html">about&help</a><br>ver.0.9</li><li><hr style="margin:5px 0px;"></li></ul>
+	<div class="menunav"><ul><li><span id ="infoboard">nomal mode</span></li><li id="logo">7wriner<ul class="menuChild"><li>hello! it's menu<hr style="margin:5px 0px;"></li><li><div id="preferencebtn" class="menubtn">preferences…<div><hr style="margin:5px 0px;"></li><li><div id="exportbtn" class="menubtn">full export</div></li><li><a href="#" download="" id="backupDl" class="menubtn">backup download</a></li><li><div id="importbtn" class="menubtn">import&replace</div></li><li><input type="file" id="setfile" accept="application/json"></li><li><hr style="margin:5px 0px;"><div id="allClearbtn" class="menubtn">clear all data</div><hr style="margin:5px 0px;"><a href="about.html">about&help</a><br>ver.0.9</li><li><hr style="margin:5px 0px;"></li></ul>
 	</li></ul>
 	</div><!-- menunav-->
 </div><!-- topheader-->
@@ -106,6 +106,7 @@
 
 
 <div id="horizon"></div>
+<script src="js/moment.js"></script>
 <script>
 ///jqueryスタート
 //localStorage.removeItem("backup") -全削除用
@@ -646,7 +647,12 @@ $(window).on('resize', function(){
     			if (navigator.platform.indexOf("Win") != -1) {//winでのショートカット
     				var cmdKey = e.altKey;
     			}
-    			
+    		
+    			if (e.ctrlKey == true && e.keyCode === 84){//contorl + tでタイムスタンプ  
+					let t = moment().format('YYYY年MM月DD日 HH:mm'); // April 8th 2018, 8:15:57 pm
+					document.execCommand('insertText',false,t);
+				}
+					
     		if (($('#Editbtn').text() == "Edit")) { //編集状態での作成を禁止
             if(cmdKey === true && e.keyCode === 13){
             				   e.preventDefault();
@@ -772,6 +778,11 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
     			if (navigator.platform.indexOf("Win") != -1) {//winでのショートカット
     				var cmdKey = e.altKey;
     			}
+    			
+    				if (e.ctrlKey == true && e.keyCode === 84){//contorl + tでタイムスタンプ  
+						let t = moment().format('YYYY年MM月DD日 HH:mm'); // April 8th 2018, 8:15:57 pm
+						document.execCommand('insertText',false,t);
+					}
     			
     if (!($('#Editbtn').text() == "Edit")) {//通常状態での操作禁止
     	if(cmdKey === true && e.keyCode === 66){//command+bでボールドに

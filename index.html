@@ -890,17 +890,14 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
 	    			    width: winW
 	 			   }, spped);
  			  }
- 			  //chromeとfirefoxではdivの作り方が違うので親の位置がずれる
- 			  //カード作成時にdivが含まれていたら、それを消してbrにする？
- 			  //しかしカード作成後の編集で同じ事になる。
- 			var userAgent = window.navigator.userAgent.toLowerCase();
- 			if(userAgent.indexOf('chrome') != -1) {
- 				var unchecknum = $(this).parent().parent().find("input[type=checkbox]:not(:checked)").size();
- 				var parentdiv = $(this).parent().parent();
-			} else{
-				var unchecknum = $(this).parent().find("input[type=checkbox]:not(:checked)").size();
+
+			//親ノードの探索。現在は一階層のみを想定した書き方。再帰的に書ければ複雑な状況にも対応できそう。
+			if ($(this).parent().hasClass("memobox") ) {
 				var parentdiv = $(this).parent();
+			}else{
+				var parentdiv = $(this).parent().parent();
 			}
+			var unchecknum = parentdiv.find("input[type=checkbox]:not(:checked)").size();
 			
 			if (unchecknum == 0){//すべてがチェックされたときの処理
 

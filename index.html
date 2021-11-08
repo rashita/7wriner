@@ -411,6 +411,7 @@ $(window).on('resize', function(){
 		});
 		$('#commandline .memobox:first-child').html(temptext);
 		$('#commandline .memobox:not(:first)').remove();
+		$('.btnset').remove();//モバイル用のボタンを消す
  	 });
  	 $('#commandDeletebtn').click(function(e) {//コマンドウィンドウ削除ボタン
     	$('#commandline').empty();
@@ -606,21 +607,21 @@ $(window).on('resize', function(){
  	 	$('#Mergebtn').hide();
  	 	$('.Deletebtn').remove();
  		$('.fullbtn').remove();
- 	 					var $btm3 = $('<div></div>',{//ダイレクト追加ボタン
- 	 						text:'＋',
- 	 						contentEditable:false,
- 	 			  			addClass:'plusbtn',	
- 	 			  			 on: {
- 	 			  			  		click: function(event) {//マージ処理
- 	 			  			  		 	var atext = $(this).prev().html();
- 	 			  			  			var btext = $(this).next().html();
- 	 			  			  			$(this).prev().html(atext + '<br>' + btext);
- 	 			  			  			$(this).next().remove();
- 	 			  			  			$(this).remove();
-    					 	 		}
-    					 	 	 }
- 	 					});
- 	 					$('#sortable .memobox').not(':first').before($btm3);
+		var $btm3 = $('<div></div>',{//ダイレクト追加ボタン
+			text:'＋',
+			contentEditable:false,
+			addClass:'plusbtn',	
+				on: {
+					click: function(event) {//マージ処理
+						var atext = $(this).prev().html();
+						var btext = $(this).next().html();
+						$(this).prev().html(atext + '<br>' + btext);
+						$(this).next().remove();
+						$(this).remove();
+					}
+					}
+		});
+		$('#sortable .memobox').not(':first').before($btm3);
  	 });
  	 $('#Callbtn').click(function(e) {//アーカイブの呼び出しボタン
  	          if (localStorage.getItem('archive')){
@@ -1211,78 +1212,78 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
  			 	$('#clearLinebtn').show();
  			 	$("#clearDonebtn").show();
  				$("#sortable").sortable("disable");
- 				 	 		var $delbtn = $('<div></div>',{//デリートボタン
- 	 						width: 13,
- 	 						text:'×',
- 	 						'font-size':'8px',
- 	 						contentEditable:false,
- 	 			  			addClass:'Deletebtn btn btn-danger btn-circle btn-xs',	
- 	 			  			 on: {
- 	 			  			  		click: function(event) {
-    					 	 			$(this).parent().remove();
-    					 	 		}
-    					 	 	 }
- 	 						});
- 	 						var $btnset = $('<div></div>',{//ボタン用拡大領域
- 	 						text:'',
- 	 						'font-size':'5px',
- 	 						contentEditable:false,
- 	 			  			addClass:'btnset',	
- 	 						});
- 	 						var $btn1 = $('<div></div>',{//モバイル用削除ボタン
- 	 						text:'×',
- 	 						'font-size':'3px',
- 	 						contentEditable:false,
- 	 						title:'delete',
- 	 			  			addClass:'btn cardbtn',	
- 	 			  			 on: {
- 	 			  			  		click: function(event) {//
- 	 			  			  			$(this).parent().next().remove();
- 	 			  			  			$(this).parent().remove();
-    					 	 		}
-    					 	 		}
- 	 						});
- 	 						var $btn2 = $('<div></div>',{//モバイル用full mode ボタン
- 	 						text:'△',
- 	 						contentEditable:false,
- 	 						title:'full screen',
- 	 			  			addClass:'btn cardbtn',	
- 	 			  			 on: {
-	 	 			  			 	click: function(event) {
-	 	 			  			 		makefullscreen($(this).parent().next());
-	 	 			  			 	}
-						 	 		}
- 	 						});
- 	 						var $btn3 = $('<div></div>',{//モバイル用新規カードを上に追加ボタン
- 	 						text:'+',
- 	 						contentEditable:false,
- 	 						title:'add newcard',
- 	 			  			addClass:'btn cardbtn',	
- 	 			  			 on: {
- 	 			  			  		click: function(event) {//
- 	 			  			  		  		var $div = $('<div></div>', {
- 	 			  			  		  			addClass:'memobox',	
- 	 			  			  		  			'contentEditable':true,
- 	 			  			  		  		});
- 	 			  			  		$(this).parent().before($div);
-    					 	 		}
-    					 	 		}
- 	 						});
- 	 						var $btn4 = $('<div></div>',{//モバイル用ヘッダー設定ボタン
- 	 						text:'■',
- 	 						contentEditable:false,
- 	 						title:'set headline',
- 	 			  			addClass:'btn cardbtn',	
- 	 			  			 on: {
- 	 			  			  		click: function(event) {//
- 	 			  			  			if ($(this).parent().next().hasClass('lineHead')){
- 	 			  			  				$(this).parent().next().removeClass('lineHead');
- 	 			  			  			}else{
- 	 			  			  				$(this).parent().next().addClass('lineHead');
- 	 			  			  			}
-    					 	 		}
-    					 	 		}
- 	 						});
+				var $delbtn = $('<div></div>',{//デリートボタン
+				width: 13,
+				text:'×',
+				'font-size':'8px',
+				contentEditable:false,
+				addClass:'Deletebtn btn btn-danger btn-circle btn-xs',	
+					on: {
+						click: function(event) {
+							$(this).parent().remove();
+						}
+						}
+				});
+				var $btnset = $('<div></div>',{//ボタン用拡大領域
+				text:'',
+				'font-size':'5px',
+				contentEditable:false,
+				addClass:'btnset',	
+				});
+				var $btn1 = $('<div></div>',{//モバイル用削除ボタン
+				text:'×',
+				'font-size':'3px',
+				contentEditable:false,
+				title:'delete',
+				addClass:'btn cardbtn',	
+					on: {
+						click: function(event) {//
+							$(this).parent().next().remove();
+							$(this).parent().remove();
+						}
+						}
+				});
+				var $btn2 = $('<div></div>',{//モバイル用full mode ボタン
+				text:'△',
+				contentEditable:false,
+				title:'full screen',
+				addClass:'btn cardbtn',	
+					on: {
+						click: function(event) {
+							makefullscreen($(this).parent().next());
+						}
+						}
+				});
+				var $btn3 = $('<div></div>',{//モバイル用新規カードを上に追加ボタン
+				text:'+',
+				contentEditable:false,
+				title:'add newcard',
+				addClass:'btn cardbtn',	
+					on: {
+						click: function(event) {//
+								var $div = $('<div></div>', {
+									addClass:'memobox',	
+									'contentEditable':true,
+								});
+						$(this).parent().before($div);
+						}
+						}
+				});
+				var $btn4 = $('<div></div>',{//モバイル用ヘッダー設定ボタン
+				text:'■',
+				contentEditable:false,
+				title:'set headline',
+				addClass:'btn cardbtn',	
+					on: {
+						click: function(event) {//
+							if ($(this).parent().next().hasClass('lineHead')){
+								$(this).parent().next().removeClass('lineHead');
+							}else{
+								$(this).parent().next().addClass('lineHead');
+							}
+						}
+						}
+				});
 				$btnset.append($btn1);
 				$btnset.append($btn2);
 				$btnset.append($btn3);
@@ -1299,36 +1300,36 @@ $(document).on("focus", ".memobox", (function(e){//カードにフォーカス�
  			}
     } 
     function outEditMode(){
-    	 						$('#Mergebtn').hide();
- 								$('#infoboard').text("nomal mode");
- 								$('#infoboard').animate({
- 									opacity: 0,
- 									}, 300 );
- 				 				$('#Editbtn').text("Edit");
- 				 				$('#Keepbtn').show();
- 				 				$('#Callbtn').show();
- 				 				$('#Sendbtn').show();
- 				 				if (!(lineMode == 3)){
- 				 					$('#leftbtn').show();
- 				 					$('#rightbtn').show();
- 				 				} 
- 				 				$('#clearLinebtn').hide();
- 				 				$("#clearDonebtn").hide();
- 				 				$( "#sortable" ).sortable("enable");
- 				 				$('.Deletebtn').remove();
- 				 				$('.btnset').remove();
- 				 				$('.plusbtn').remove();
- 				 				$('.fullbtn').remove();
- 				 				$('.memobox').removeAttr('contentEditable');
- 				 				$('.memobox').removeAttr('style');
- 				 				$('.memobox').removeAttr('tabIndex');
- 				 				$('.memobox').removeAttr('data-evernote-id');
- 				 				$('.memobox').removeClass('padding-left ui-sortable-handle fixCard js-evernote-checked');
- 				 				$('.taskbox').removeClass('js-evernote-checked');
- 				 				$('.taskbox').removeAttr('data-evernote-id');
- 				 				$('.memobox').blur();
- 				 				currentMode = 'normal';
- 				 				saveLine();
+		$('#Mergebtn').hide();
+		$('#infoboard').text("nomal mode");
+		$('#infoboard').animate({
+			opacity: 0,
+			}, 300 );
+		$('#Editbtn').text("Edit");
+		$('#Keepbtn').show();
+		$('#Callbtn').show();
+		$('#Sendbtn').show();
+		if (!(lineMode == 3)){
+			$('#leftbtn').show();
+			$('#rightbtn').show();
+		} 
+		$('#clearLinebtn').hide();
+		$("#clearDonebtn").hide();
+		$( "#sortable" ).sortable("enable");
+		$('.Deletebtn').remove();
+		$('.btnset').remove();
+		$('.plusbtn').remove();
+		$('.fullbtn').remove();
+		$('.memobox').removeAttr('contentEditable');
+		$('.memobox').removeAttr('style');
+		$('.memobox').removeAttr('tabIndex');
+		$('.memobox').removeAttr('data-evernote-id');
+		$('.memobox').removeClass('padding-left ui-sortable-handle fixCard js-evernote-checked');
+		$('.taskbox').removeClass('js-evernote-checked');
+		$('.taskbox').removeAttr('data-evernote-id');
+		$('.memobox').blur();
+		currentMode = 'normal';
+		saveLine();
     }
     function inMergeMode(){//マージモード移行処理
     	if (currentMode ==  'merge'){
